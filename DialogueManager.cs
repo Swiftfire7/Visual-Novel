@@ -6,9 +6,6 @@ public class DialogueManager : Control
 {
     public List<DialogueBox> dialogueBox;
     [Export]
-
-    public PackedScene InterfaceSelectableObject;
-    public List<InterfaceSelection> Selections = new List<InterfaceSelection>();
     private bool dialogueIsUp = false;
 
     public bool FinishedPrinting = false;
@@ -23,42 +20,14 @@ public class DialogueManager : Control
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public async override void _Process(float delta)
+    public override void _Process(float delta)
     {
         if (SceneManager.GlobalSceneManager.Paused && dialogueIsUp)
         {
-            //allows user to navigate the ui using left, right, and enter
-            if (Input.IsActionJustPressed("ui_left"))
-            {
-                foreach (var item in Selections)
-                {
-                    item.SetSelected(false);
-                }
-                currentSelectionIndex -= 1;
-                if (currentSelectionIndex < 0)
-                {
-                    currentSelectionIndex = 0;
-                }
-                Selections[currentSelectionIndex].SetSelected(true);
-            }
-            else if (Input.IsActionJustPressed("ui_right"))
-            {
-                foreach (var item in Selections)
-                {
-                    item.SetSelected(false);
-                }
-                currentSelectionIndex += 1;
-                if (currentSelectionIndex > Selections.Count - 1)
-                {
-                    currentSelectionIndex = Selections.Count - 1;
-                }
-                Selections[currentSelectionIndex].SetSelected(true);
-            }
-            else if (Input.IsActionJustPressed("ui_accept") && FinishedPrinting == true)
+            //Next button's logic
+            if (Input.IsActionJustPressed("ui_accept") && FinishedPrinting == true)
             {
                 //continues the dialogue chain after pressing next
-                await ToSignal(GetTree(), "idle_frame");
-                displayNextDialogueElement(Selections[currentSelectionIndex].interfaceSelectionObject.SelectionIndex);
 
 
             }
@@ -69,32 +38,7 @@ public class DialogueManager : Control
         GetNode<Popup>("Popup").Popup_();
         GetNode<Label>("Popup/Label").Text = DialogueHeader;
         FinishedPrinting = false;
-        WriteDialogue(dialogueBox[0]);
     }
-    public void WriteDialogue(DialogueBox dialogue)
-    {
-        foreach (Node item in GetNode<Node>("Popup/HBoxContainer").GetChildren())
-        {
-            item.QueueFree();
-        }
-        Selections = new List<InterfaceSelection>();
-        GetNode<RichTextLabel>("Popup/RichTextLabel").Text = dialogue.DisplayText;
-        foreach (var item in dialogue.InterfaceSelectionObjects)
-        {
-            //sets up our buttons and passes back an object after instantiation so we can reference it dynamically through code
-            InterfaceSelection interfaceSelection = InterfaceSelectableObject.Instance() as InterfaceSelection;
-            interfaceSelection.interfaceSelectionObject = item;
-            GetNode<HBoxContainer>("Popup/HBoxContainer").AddChild(interfaceSelection);
-            Selections.Add(interfaceSelection);
-            interfaceSelection.SetSelected(false);
-        }
-        Selections[0].SetSelected(true);
-        currentSelectionIndex = 0;
-        SceneManager.GlobalSceneManager.Paused = true;
-        dialogueIsUp = true;
-        FinishedPrinting = true;
-    }
-    //upon selecting dialogue, fetch the scene's dialogue dynamically
     private void shutDownDialogue()
     {
         GetNode<Popup>("Popup").Hide();
@@ -109,7 +53,7 @@ public class DialogueManager : Control
         }
         else
         {
-            WriteDialogue(dialogueBox[index]);
+            //call the write dialogue method here
         }
     }
 }
