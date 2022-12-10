@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://DialogueManager.cs" type="Script" id=1]
 [ext_resource path="res://InterfaceManager.cs" type="Script" id=2]
+[ext_resource path="res://Character Sprites/Sasheen_bust.png" type="Texture" id=3]
+[ext_resource path="res://CharacterManager.cs" type="Script" id=4]
+[ext_resource path="res://SceneManager.cs" type="Script" id=5]
+[ext_resource path="res://InterfaceSelection.tscn" type="PackedScene" id=6]
 
 [node name="SceneManager" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="InterfaceManager" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )
@@ -12,6 +17,7 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+InterfaceSelectableObject = ExtResource( 6 )
 
 [node name="Popup" type="Popup" parent="InterfaceManager/DialogueManager"]
 visible = true
@@ -35,24 +41,37 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Test NPC Name"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="InterfaceManager/DialogueManager/Popup"]
-anchor_top = 0.165
 anchor_right = 1.0
-anchor_bottom = 0.81
+anchor_bottom = 1.0
 margin_left = 7.0
-margin_top = -0.0700016
+margin_top = 26.0
 margin_right = -10.0
-margin_bottom = 0.019989
+margin_bottom = -30.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "this is the example text"
 scroll_following = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InterfaceManager/DialogueManager/Popup"]
-anchor_top = 0.835
+anchor_top = 0.772
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.962
 margin_left = 12.0
-margin_top = 0.0699921
+margin_top = 0.0239944
 margin_right = -18.0
-margin_bottom = -6.0
+margin_bottom = 0.0039978
 rect_pivot_offset = Vector2( -225, -172 )
 alignment = 1
+
+[node name="CharacterManager" type="Control" parent="."]
+margin_top = -1.0
+margin_right = 269.0
+margin_bottom = 440.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="CharacterManager"]
+scale = Vector2( 0.472566, 0.472566 )
+texture = ExtResource( 3 )
+centered = false
