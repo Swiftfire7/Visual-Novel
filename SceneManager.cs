@@ -3,7 +3,7 @@ using System;
 
 public class SceneManager : Node2D
 {
-    public bool Paused = false;
+    public bool SceneStarted = false;
     DialogueReader dialogueReader;
     public static SceneManager GlobalSceneManager;
 
@@ -24,7 +24,7 @@ public class SceneManager : Node2D
     {
         dialogueReader.Indicator.Visible = dialogueReader.finished;
 
-        if (Input.IsActionJustPressed("ui_right") && Paused == false)
+        if (Input.IsActionJustPressed("ui_right") && SceneStarted == true)
         {
             if (dialogueReader.finished)
             {
@@ -35,11 +35,12 @@ public class SceneManager : Node2D
                 dialogueReader.DialogueBox.VisibleCharacters = dialogueReader.DialogueBox.Text.Length;
             }
         }
-        if (Input.IsActionJustPressed("ui_accept") && Paused == false)
+        if (Input.IsActionJustPressed("ui_accept") && SceneStarted == false)
         {
             //find the scene's character dialogue and UI, then display the dialogue
             Node obj = GetNode<Node>("CharacterManager");
             showDialogueBox(obj);
+            SceneStarted = true;
         }
     }
     private void showDialogueBox(Node obj)
@@ -49,7 +50,13 @@ public class SceneManager : Node2D
         {
             CharacterManager dialogueBox = obj as CharacterManager;
             dialogueBox.setDialogueBox(dialogueReader);
-            InterfaceManager.dialogueManager.ShowDialogueElement();
+            ShowDialogueElement();
         }
+    }
+    public void ShowDialogueElement()
+    {
+        GetNode<Popup>("/root/SceneManager/InterfaceManager/DialogueManager/Popup").Popup_();
+        //GetNode<Label>("Popup/Label").Text = DialogueHeader;
+        //FinishedPrinting = false;
     }
 }

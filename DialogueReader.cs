@@ -12,6 +12,7 @@ public class DialogueReader : Popup
     private int numOfDialogues = 0;
     public bool finished = false;
     public AnimatedSprite Indicator;
+    public Sprite characterSprite;
     public RichTextLabel Speaker;
     public RichTextLabel DialogueBox;
     public File storedDialogue = new File();
@@ -31,6 +32,7 @@ public class DialogueReader : Popup
         DialogueBox = GetNode<RichTextLabel>("Dialogue");
         DialogueBox.BbcodeEnabled = true;
         Indicator = GetNode<AnimatedSprite>("AnimatedSprite");
+        characterSprite = GetNode<Sprite>("/root/SceneManager/CharacterManager/Sprite");
         GetDialogue();
     }
 
@@ -63,8 +65,11 @@ public class DialogueReader : Popup
         DialogueBox.VisibleCharacters = 0;
 
         //character sprite logic
-        //var img = (Dialogues["Emotion"] as Dictionary)["idle"];
+        File f = new File();
+        var speakerEmotion = characterManagers[phraseNum].Speaker + characterManagers[phraseNum].Emotion;
 
+        var img = (Texture)GD.Load("res://Assets/Scenes/Introduction/intro1/characters/" + speakerEmotion + ".png");
+        characterSprite.Texture = img;
         while (DialogueBox.VisibleCharacters < DialogueBox.Text.Length)
         {
             DialogueBox.VisibleCharacters += 1;

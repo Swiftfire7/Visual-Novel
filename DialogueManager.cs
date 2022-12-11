@@ -22,27 +22,21 @@ public class DialogueManager : Control
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        if (SceneManager.GlobalSceneManager.Paused && dialogueIsUp)
-        {
-            //Next button's logic
-            if (Input.IsActionJustPressed("ui_accept") && FinishedPrinting == true)
-            {
-                //continues the dialogue chain after pressing next
+        //if (SceneManager.GlobalSceneManager.SceneStarted && dialogueIsUp)
+        //{
+        //Next button's logic
+        //if (Input.IsActionJustPressed("ui_accept") && FinishedPrinting == true)
+        //{
+        //continues the dialogue chain after pressing next
 
 
-            }
-        }
-    }
-    public void ShowDialogueElement()
-    {
-        GetNode<Popup>("Popup").Popup_();
-        //GetNode<Label>("Popup/Label").Text = DialogueHeader;
-        FinishedPrinting = false;
+        //}
+        //}
     }
     private void shutDownDialogue()
     {
         GetNode<Popup>("Popup").Hide();
-        SceneManager.GlobalSceneManager.Paused = false;
+        SceneManager.GlobalSceneManager.SceneStarted = false;
         dialogueIsUp = false;
     }
     private void displayNextDialogueElement(int index)
