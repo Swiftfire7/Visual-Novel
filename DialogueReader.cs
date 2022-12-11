@@ -10,7 +10,7 @@ public class DialogueReader : Popup
     public float textSpeed = 0.05f;
     int phraseNum = 0;
     private int numOfDialogues = 0;
-    bool finished = false;
+    public bool finished = false;
     public AnimatedSprite Indicator;
     public RichTextLabel Speaker;
     public RichTextLabel DialogueBox;
@@ -36,18 +36,7 @@ public class DialogueReader : Popup
 
     public void _Process()
     {
-        if (Input.IsActionJustPressed("ui_accept"))
-        {
-            Indicator.Visible = finished;
-            if (finished)
-            {
-                NextPhrase();
-            }
-            else
-            {
-                DialogueBox.VisibleCharacters = DialogueBox.Text.Length;
-            }
-        }
+
     }
 
     public void GetDialogue()

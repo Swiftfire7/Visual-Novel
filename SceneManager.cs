@@ -4,8 +4,7 @@ using System;
 public class SceneManager : Node2D
 {
     public bool Paused = false;
-    [Export]
-    NodePath SceneStart;
+    DialogueReader dialogueReader;
     public static SceneManager GlobalSceneManager;
 
     // Called when the node enters the scene tree for the first time.
@@ -19,14 +18,26 @@ public class SceneManager : Node2D
         {
             QueueFree();
         }
+        dialogueReader = GetNode<DialogueReader>("InterfaceManager/DialogueManager/Popup");
     }
     public override void _Process(float delta)
     {
+        dialogueReader.Indicator.Visible = dialogueReader.finished;
 
-
+        if (Input.IsActionJustPressed("ui_right") && Paused == false)
+        {
+            if (dialogueReader.finished)
+            {
+                dialogueReader.NextPhrase();
+            }
+            else
+            {
+                dialogueReader.DialogueBox.VisibleCharacters = dialogueReader.DialogueBox.Text.Length;
+            }
+        }
         if (Input.IsActionJustPressed("ui_accept") && Paused == false)
         {
-            //find the scene's character dialogue and UI
+            //find the scene's character dialogue and UI, then display the dialogue
             Node obj = GetNode<Node>("CharacterManager");
             showDialogueBox(obj);
         }
@@ -37,7 +48,6 @@ public class SceneManager : Node2D
         if (obj is CharacterManager)
         {
             CharacterManager dialogueBox = obj as CharacterManager;
-            DialogueReader dialogueReader = GetNode<DialogueReader>("InterfaceManager/DialogueManager/Popup");
             dialogueBox.setDialogueBox(dialogueReader);
             InterfaceManager.dialogueManager.ShowDialogueElement();
         }
