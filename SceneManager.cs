@@ -4,6 +4,8 @@ using System;
 public class SceneManager : Node2D
 {
     public bool Paused = false;
+    [Export]
+    NodePath SceneStart;
     public static SceneManager GlobalSceneManager;
 
     // Called when the node enters the scene tree for the first time.
@@ -35,7 +37,8 @@ public class SceneManager : Node2D
         if (obj is CharacterManager)
         {
             CharacterManager dialogueBox = obj as CharacterManager;
-            dialogueBox.setDialogueBox();
+            DialogueReader dialogueReader = GetNode<DialogueReader>("InterfaceManager/DialogueManager/Popup");
+            dialogueBox.setDialogueBox(dialogueReader);
             InterfaceManager.dialogueManager.ShowDialogueElement();
         }
     }

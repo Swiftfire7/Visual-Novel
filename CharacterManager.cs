@@ -4,17 +4,16 @@ using System.Collections.Generic;
 
 public class CharacterManager : Control
 {
-    private List<DialogueBox> dialogueBox;
-    private string characterName;
+    public string Speaker;
+    public string Emotion;
+    public string Text;
     public override void _Ready()
     {
-        characterName = "Sasheen";
 
     }
-    public void setDialogueBox()
+    public void setDialogueBox(DialogueReader dialogueReader)
     {
-        InterfaceManager.dialogueManager.dialogueBox = dialogueBox;
-        InterfaceManager.dialogueManager.DialogueHeader = characterName;
+        dialogueReader.NextPhrase();
     }
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)

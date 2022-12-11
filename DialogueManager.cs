@@ -36,7 +36,7 @@ public class DialogueManager : Control
     public void ShowDialogueElement()
     {
         GetNode<Popup>("Popup").Popup_();
-        GetNode<Label>("Popup/Label").Text = DialogueHeader;
+        //GetNode<Label>("Popup/Label").Text = DialogueHeader;
         FinishedPrinting = false;
     }
     private void shutDownDialogue()
