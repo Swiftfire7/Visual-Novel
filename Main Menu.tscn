@@ -551,7 +551,7 @@ scroll_following = true
 position = Vector2( 986, 132 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 5
+frame = 4
 playing = true
 
 [node name="Name" type="RichTextLabel" parent="DialogueManager/Popup"]
