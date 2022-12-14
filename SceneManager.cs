@@ -4,7 +4,9 @@ using System;
 public class SceneManager : Control
 {
     public bool SceneStarted = false;
+    public bool MenuIsUp = true;
     DialogueReader dialogueReader;
+    Button button;
     public static SceneManager GlobalSceneManager;
 
     // Called when the node enters the scene tree for the first time.
@@ -18,7 +20,8 @@ public class SceneManager : Control
         {
             QueueFree();
         }
-        dialogueReader = GetNode<DialogueReader>("InterfaceManager/DialogueManager/Popup");
+        dialogueReader = GetNode<DialogueReader>("DialogueManager/Popup");
+        button = GetNode<Button>("Background/MenuManager/instructions");
     }
     public override void _Process(float delta)
     {
@@ -39,11 +42,12 @@ public class SceneManager : Control
                 SceneStarted = false;
             }
         }
-        if (Input.IsActionJustPressed("ui_accept") && SceneStarted == false)
+        if (Input.IsActionJustPressed("ui_accept") && SceneStarted == false && MenuIsUp == false)
         {
             //find the scene's character dialogue and UI, then display the dialogue
             Node obj = GetNode<Node>("CharacterSpawner");
             showDialogueBox(obj);
+            button.Hide();
             SceneStarted = true;
         }
     }
@@ -57,10 +61,12 @@ public class SceneManager : Control
             ShowDialogueElement();
         }
     }
+    public void OnStartButtonPressed()
+    {
+        TextureRect background = GetNode<TextureRect>("Background");
+    }
     public void ShowDialogueElement()
     {
         dialogueReader.Popup_();
-        //GetNode<Label>("Popup/Label").Text = DialogueHeader;
-        //FinishedPrinting = false;
     }
 }

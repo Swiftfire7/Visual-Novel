@@ -83,7 +83,6 @@ public class DialogueReader : Popup
         DialogueBox.VisibleCharacters = 0;
 
         //character sprite logic
-        File f = new File();
         var speakerEmotion = characterManagers[phraseNum].Speaker + characterManagers[phraseNum].Emotion;
 
         var img = (Texture)GD.Load("res://Assets/Scenes/Introduction/intro1/characters/" + speakerEmotion + ".png");

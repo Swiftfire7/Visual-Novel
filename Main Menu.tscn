@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://DialogueManager.cs" type="Script" id=1]
-[ext_resource path="res://InterfaceManager.cs" type="Script" id=2]
+[ext_resource path="res://Assets/backgrounds/diffused menu scroll.png" type="Texture" id=1]
+[ext_resource path="res://MenuManager.cs" type="Script" id=2]
 [ext_resource path="res://Character Sprites/Sasheen_bust.png" type="Texture" id=3]
 [ext_resource path="res://CharacterManager.cs" type="Script" id=4]
 [ext_resource path="res://SceneManager.cs" type="Script" id=5]
@@ -22,17 +22,505 @@ animations = [ {
 [node name="SceneManager" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 script = ExtResource( 5 )
 
-[node name="InterfaceManager" type="CanvasLayer" parent="."]
-script = ExtResource( 2 )
-
-[node name="DialogueManager" type="Control" parent="InterfaceManager"]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+texture = ExtResource( 1 )
+expand = true
 
-[node name="Popup" type="Popup" parent="InterfaceManager/DialogueManager"]
+[node name="MenuManager" type="Control" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 2 )
+
+[node name="instructions" type="Button" parent="Background/MenuManager"]
+visible = false
+anchor_left = 0.051
+anchor_top = 0.068
+anchor_right = 0.918
+anchor_bottom = 0.267
+margin_left = -0.224003
+margin_top = 0.199997
+margin_right = -0.0320435
+margin_bottom = -0.200012
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/instructions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "tap enter or space to begin"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Scene Select" type="ColorRect" parent="Background/MenuManager"]
+visible = false
+anchor_left = 0.108
+anchor_top = 0.035
+anchor_right = 0.245
+anchor_bottom = 0.09
+margin_left = 0.407997
+margin_right = -0.880005
+margin_bottom = -3.8147e-06
+mouse_filter = 1
+color = Color( 0.862745, 0.121569, 0.121569, 1 )
+
+[node name="Label" type="Label" parent="Background/MenuManager/Scene Select"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 0.984314, 0, 1 )
+text = "Scene Selection: Please select one"
+align = 1
+autowrap = true
+
+[node name="Volume Select6" type="Button" parent="Background/MenuManager/Scene Select"]
+anchor_left = 0.022
+anchor_top = 1.667
+anchor_right = 1.029
+anchor_bottom = 2.545
+margin_left = -0.0580003
+margin_top = -0.0110016
+margin_right = -0.0310059
+margin_bottom = 0.0149994
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Scene Select/Volume Select6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Scene 0: Paralogues"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select7" type="Button" parent="Background/MenuManager/Scene Select"]
+anchor_left = 0.101
+anchor_top = 3.03
+anchor_right = 1.108
+anchor_bottom = 3.909
+margin_left = -0.0390005
+margin_top = 0.00999451
+margin_right = -0.0120087
+margin_bottom = 0.00299072
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Scene Select/Volume Select7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Scene 1: The Sandy Sphinx"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select8" type="Button" parent="Background/MenuManager/Scene Select"]
+anchor_left = 0.201
+anchor_top = 4.333
+anchor_right = 1.209
+anchor_bottom = 5.212
+margin_left = 0.0609989
+margin_top = 0.0109863
+margin_right = -0.0510101
+margin_bottom = 0.00398254
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Scene Select/Volume Select8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Scene 2: Elder of the Setra"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select9" type="Button" parent="Background/MenuManager/Scene Select"]
+anchor_left = 0.266
+anchor_top = 5.727
+anchor_right = 1.273
+anchor_bottom = 7.242
+margin_left = 0.026001
+margin_top = 0.00898743
+margin_right = 0.0529938
+margin_bottom = 0.0139771
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Scene Select/Volume Select9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Scene 3: Aleo Adere, Man With a Passion for Flare"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select10" type="Button" parent="Background/MenuManager/Scene Select"]
+anchor_left = 0.302
+anchor_top = 7.455
+anchor_right = 1.309
+anchor_bottom = 8.333
+margin_left = 0.0219994
+margin_top = -0.0150146
+margin_right = 0.048996
+margin_bottom = 0.0109863
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Scene Select/Volume Select10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Scene 4: The Clockwork Heart"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Chapter Select" type="ColorRect" parent="Background/MenuManager"]
+visible = false
+anchor_left = 0.108
+anchor_top = 0.035
+anchor_right = 0.245
+anchor_bottom = 0.09
+margin_left = 0.407997
+margin_right = -0.880005
+margin_bottom = -3.8147e-06
+mouse_filter = 1
+color = Color( 0.862745, 0.121569, 0.121569, 1 )
+
+[node name="Label" type="Label" parent="Background/MenuManager/Chapter Select"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 0.984314, 0, 1 )
+text = "Chapter Selection: Please select one"
+align = 1
+autowrap = true
+
+[node name="Volume Select6" type="Button" parent="Background/MenuManager/Chapter Select"]
+anchor_left = 0.022
+anchor_top = 1.667
+anchor_right = 1.029
+anchor_bottom = 2.545
+margin_left = -0.0580003
+margin_top = -0.0110016
+margin_right = -0.0310059
+margin_bottom = 0.0149994
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Chapter Select/Volume Select6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Chapter 0: Paralogues(N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select7" type="Button" parent="Background/MenuManager/Chapter Select"]
+anchor_left = 0.101
+anchor_top = 3.03
+anchor_right = 1.108
+anchor_bottom = 3.909
+margin_left = -0.0390005
+margin_top = 0.00999451
+margin_right = -0.0120087
+margin_bottom = 0.00299072
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Chapter Select/Volume Select7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Chapter 1: Surveying the sandtown"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select8" type="Button" parent="Background/MenuManager/Chapter Select"]
+anchor_left = 0.201
+anchor_top = 4.333
+anchor_right = 1.209
+anchor_bottom = 5.212
+margin_left = 0.0609989
+margin_top = 0.0109863
+margin_right = -0.0510101
+margin_bottom = 0.00398254
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Chapter Select/Volume Select8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Chapter 2: First Outing(N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select9" type="Button" parent="Background/MenuManager/Chapter Select"]
+anchor_left = 0.266
+anchor_top = 5.727
+anchor_right = 1.273
+anchor_bottom = 6.606
+margin_left = 0.026001
+margin_top = 0.00898743
+margin_right = 0.0529938
+margin_bottom = 18.002
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Chapter Select/Volume Select9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Chapter 3: Shifting the Threads of Fate (N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select10" type="Button" parent="Background/MenuManager/Chapter Select"]
+anchor_left = 0.309
+anchor_top = 7.333
+anchor_right = 1.331
+anchor_bottom = 8.242
+margin_left = 0.048996
+margin_top = 0.0109863
+margin_right = -0.00901794
+margin_bottom = 0.0139771
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Chapter Select/Volume Select10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Chapter 4: Tests of the Shetrayans(N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select11" type="Button" parent="Background/MenuManager/Chapter Select"]
+anchor_left = 0.201
+anchor_top = 8.485
+anchor_right = 1.245
+anchor_bottom = 9.424
+margin_left = 0.0609989
+margin_top = -0.00500488
+margin_right = -0.0550079
+margin_bottom = 0.00796509
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Chapter Select/Volume Select11"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Chapter 5: The Colosseum(N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume Select" type="ColorRect" parent="Background/MenuManager"]
+anchor_left = 0.108
+anchor_top = 0.035
+anchor_right = 0.245
+anchor_bottom = 0.09
+margin_left = 0.407997
+margin_right = -0.880005
+margin_bottom = -3.8147e-06
+mouse_filter = 1
+color = Color( 0.862745, 0.121569, 0.121569, 1 )
+
+[node name="Label" type="Label" parent="Background/MenuManager/Volume Select"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 0.984314, 0, 1 )
+text = "Volume Selection: Please select one"
+align = 1
+autowrap = true
+
+[node name="Volume 0" type="Button" parent="Background/MenuManager/Volume Select"]
+anchor_left = 0.007
+anchor_top = 1.515
+anchor_right = 1.0
+anchor_bottom = 2.394
+margin_left = 0.027
+margin_top = 0.00499725
+margin_right = 2.0
+margin_bottom = -0.0019989
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Volume Select/Volume 0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Volume 0: Prologues (N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 1" type="Button" parent="Background/MenuManager/Volume Select"]
+anchor_left = 0.058
+anchor_top = 2.758
+anchor_right = 1.065
+anchor_bottom = 3.636
+margin_left = -0.0620003
+margin_top = -0.0140076
+margin_right = -0.0350037
+margin_bottom = 5.01199
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Volume Select/Volume 1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Volume 1: Sifting Through the Sands"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 2" type="Button" parent="Background/MenuManager/Volume Select"]
+anchor_left = 0.144
+anchor_top = 4.242
+anchor_right = 1.151
+anchor_bottom = 5.121
+margin_left = -0.0160007
+margin_top = 0.0139923
+margin_right = 0.0110016
+margin_bottom = 2.00699
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Volume Select/Volume 2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Volume 2: The Battle of Shetrayah (N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 3" type="Button" parent="Background/MenuManager/Volume Select"]
+anchor_left = 0.259
+anchor_top = 5.576
+anchor_right = 1.266
+anchor_bottom = 6.455
+margin_left = -0.000999451
+margin_top = -0.00801086
+margin_right = 0.026001
+margin_bottom = -0.0150146
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Volume Select/Volume 3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Volume 3: Dust Devil (N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 4" type="Button" parent="Background/MenuManager/Volume Select"]
+anchor_left = 0.281
+anchor_top = 6.879
+anchor_right = 1.288
+anchor_bottom = 7.758
+margin_left = -0.0590019
+margin_top = -0.00700378
+margin_right = -0.0320129
+margin_bottom = -0.0140076
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Volume Select/Volume 4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Volume 4: Repentance (N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 5" type="Button" parent="Background/MenuManager/Volume Select"]
+anchor_left = 0.259
+anchor_top = 8.212
+anchor_right = 1.266
+anchor_bottom = 9.091
+margin_left = -0.000999451
+margin_top = 0.00396729
+margin_right = 0.026001
+margin_bottom = -0.00302124
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Volume Select/Volume 5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Volume 5: Baal's Doom Blitz (N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 6" type="Button" parent="Background/MenuManager/Volume Select"]
+anchor_left = 0.194
+anchor_top = 9.606
+anchor_right = 1.288
+anchor_bottom = 10.485
+margin_left = 0.0339985
+margin_top = 0.00198364
+margin_right = -12.032
+margin_bottom = -0.00500488
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Volume Select/Volume 6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Volume 6: Dilation (N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="DialogueManager" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Popup" type="Popup" parent="DialogueManager"]
 visible = true
 anchor_top = 0.737
 anchor_right = 1.0
@@ -40,47 +528,50 @@ anchor_bottom = 1.0
 margin_top = -0.200043
 script = ExtResource( 10 )
 
-[node name="ColorRect" type="ColorRect" parent="InterfaceManager/DialogueManager/Popup"]
+[node name="ColorRect" type="ColorRect" parent="DialogueManager/Popup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Dialogue" type="RichTextLabel" parent="InterfaceManager/DialogueManager/Popup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 7.0
-margin_top = 26.0
-margin_right = -10.0
-margin_bottom = -30.0
+[node name="Dialogue" type="RichTextLabel" parent="DialogueManager/Popup"]
+anchor_left = 0.027
+anchor_top = 0.184
+anchor_right = 0.99
+anchor_bottom = 0.81
+margin_left = 0.351999
+margin_top = -0.0720139
+margin_right = 0.239929
+margin_bottom = 0.0199432
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "this is the example text"
 scroll_following = true
 
-[node name="Timer" type="Timer" parent="InterfaceManager/DialogueManager/Popup"]
+[node name="Timer" type="Timer" parent="DialogueManager/Popup"]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="InterfaceManager/DialogueManager/Popup"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="DialogueManager/Popup"]
 position = Vector2( 986, 132 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 1
+frame = 5
 playing = true
 
-[node name="Name" type="RichTextLabel" parent="InterfaceManager/DialogueManager/Popup"]
-anchor_left = 0.008
-anchor_top = 0.038
+[node name="Name" type="RichTextLabel" parent="DialogueManager/Popup"]
+anchor_left = 0.021
+anchor_top = 0.057
 anchor_right = 0.143
-anchor_bottom = 0.291
-margin_left = -0.192
-margin_top = -0.00394154
+anchor_bottom = 0.278
+margin_left = -0.504002
+margin_top = -0.00600433
 margin_right = -0.432007
-margin_bottom = 0.0220413
+margin_bottom = 0.0759773
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "test name"
 
-[node name="Tween" type="Tween" parent="InterfaceManager/DialogueManager/Popup"]
+[node name="Tween" type="Tween" parent="DialogueManager/Popup"]
 
 [node name="CharacterSpawner" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 4 )
 
 [node name="Position2" type="TextureRect" parent="CharacterSpawner"]
@@ -116,3 +607,7 @@ margin_right = -0.240021
 margin_bottom = 0.199982
 texture = ExtResource( 3 )
 expand = true
+
+[connection signal="button_up" from="Background/MenuManager/Scene Select/Volume Select7" to="Background/MenuManager" method="OnScene1"]
+[connection signal="button_up" from="Background/MenuManager/Chapter Select/Volume Select7" to="Background/MenuManager" method="OnChapter1"]
+[connection signal="button_up" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume1"]

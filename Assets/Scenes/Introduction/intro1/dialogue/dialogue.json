@@ -1,32 +1,110 @@
 [
     {
-        "Speaker": "Sasheen",
+        "Speaker": "Midna",
         "Emotion": "idle",
-        "Text": "Test Dialogue! UwU",
+        "Text": "(This is definitely the right town. Where's the tavern?)",
+        "Position": "1"
+    },
+    {
+        "Speaker": " ",
+        "Emotion": "idle",
+        "Text": "Near the end of the oasis, a sign reads 'The Sandy Sphinx'",
+        "Position": "1"
+    },
+    {
+        "Speaker": "Midna",
+        "Emotion": "idle",
+        "Text": "That looks promising...",
+        "Position": "1"
+    },
+    {
+        "Speaker": "Midna",
+        "Emotion": "idle",
+        "Text": "(knock knock) Salutations, is this tavern outsiders were directed to gather at?",
+        "Position": "1"
+    },
+    {
+        "Speaker": "Sasheenhood",
+        "Emotion": "idle",
+        "Text": "Why yes it is! Welcome to the Sandy Sphinx! I'll be right with you, please let me find you a seat.",
+        "Position": "4"
+    },
+    {
+        "Speaker": " ",
+        "Emotion": "idle",
+        "Text": "the barista smiles and shows her inside",
+        "Position": "4"
+    },
+    {
+        "Speaker": "Gunter",
+        "Emotion": "idle",
+        "Text": "Well Bularia, this is it. Finally some Godsdamned food.",
+        "Position": "1"
+    },
+    {
+        "Speaker": "Bularia",
+        "Emotion": "idle",
+        "Text": "Oh HELL yeah! I haven't had anything since yesterday!",
+        "Position": "2"
+    },
+    {
+        "Speaker": "Gunter",
+        "Emotion": "idle",
+        "Text": "Ain't that the truth. Preach it, sister! I'm parched, let's get to it.",
+        "Position": "1"
+    },
+    {
+        "Speaker": " ",
+        "Emotion": "idle",
+        "Text": "The Rowdy pair throw wide the wooden tavern doors.",
+        "Position": "2"
+    },
+    {
+        "Speaker": "Tiffany",
+        "Emotion": "idle",
+        "Text": "Mmkay there ain't no bloomin' way tha' I missed an enti're town",
+        "Position": "1"
+    },
+    {
+        "Speaker": "Tiffany",
+        "Emotion": "idle",
+        "Text": "'SPECIALLY NOT ONE THIS BLOODY COOL! They got all sorts of folks, a pool, and a tavern!",
+        "Position": "1"
+    },
+    {
+        "Speaker": "Tiffany",
+        "Emotion": "idle",
+        "Text": "when'n the Noine Hells did this get here...?",
+        "Position": "1"
+    },
+    {
+        "Speaker": "Tiffany",
+        "Emotion": "idle",
+        "Text": "ah, doesn' ma'ah-fock it, that tavern has a gorgeous stage-",
+        "Position": "1"
+    },
+    {
+        "Speaker": "Tiffany",
+        "Emotion": "idle",
+        "Text": "I cahn' wai' to spread my people's fines' dahnces from it",
+        "Position": "1"
+    },
+    {
+        "Speaker": " ",
+        "Emotion": "idle",
+        "Text": "The free air spirit glides through the opened doors",
         "Position": "1"
     },
     {
         "Speaker": "Sasheen",
         "Emotion": "idle",
-        "Text": "Test Dialogue 2! UwU",
-        "Position": "2"
-    },
-    {
-        "Speaker": "Sasheen",
-        "Emotion": "idle",
-        "Text": "Test Dialogue 3! UwU",
+        "Text": "Well, the tavern's all but full, I had better begin the debriefing...",
         "Position": "3"
     },
     {
-        "Speaker": "Sasheen",
+        "Speaker": " ",
         "Emotion": "idle",
-        "Text": "Hello! ^.^",
-        "Position": "4"
-    },
-    {
-        "Speaker": "Sasheen",
-        "Emotion": "idle",
-        "Text": "Welcome to the Sandy Sphinx! I'll be right with you.",
-        "Position": "4"
+        "Text": "To be Continued.../npress enter or space to replay",
+        "Position": "3"
     }
 ]
