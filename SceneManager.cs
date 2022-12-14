@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class SceneManager : Node2D
+public class SceneManager : Control
 {
     public bool SceneStarted = false;
     DialogueReader dialogueReader;
@@ -34,11 +34,15 @@ public class SceneManager : Node2D
             {
                 dialogueReader.DialogueBox.VisibleCharacters = dialogueReader.DialogueBox.Text.Length;
             }
+            if (dialogueReader.dialogueEnded)
+            {
+                SceneStarted = false;
+            }
         }
         if (Input.IsActionJustPressed("ui_accept") && SceneStarted == false)
         {
             //find the scene's character dialogue and UI, then display the dialogue
-            Node obj = GetNode<Node>("CharacterManager");
+            Node obj = GetNode<Node>("CharacterSpawner");
             showDialogueBox(obj);
             SceneStarted = true;
         }
@@ -55,7 +59,7 @@ public class SceneManager : Node2D
     }
     public void ShowDialogueElement()
     {
-        GetNode<Popup>("/root/SceneManager/InterfaceManager/DialogueManager/Popup").Popup_();
+        dialogueReader.Popup_();
         //GetNode<Label>("Popup/Label").Text = DialogueHeader;
         //FinishedPrinting = false;
     }

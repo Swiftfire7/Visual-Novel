@@ -2,11 +2,31 @@
     {
         "Speaker": "Sasheen",
         "Emotion": "idle",
-        "Text": "Test Dialogue! UwU"
+        "Text": "Test Dialogue! UwU",
+        "Position": "1"
     },
     {
         "Speaker": "Sasheen",
         "Emotion": "idle",
-        "Text": "Hello! ^.^"
+        "Text": "Test Dialogue 2! UwU",
+        "Position": "2"
+    },
+    {
+        "Speaker": "Sasheen",
+        "Emotion": "idle",
+        "Text": "Test Dialogue 3! UwU",
+        "Position": "3"
+    },
+    {
+        "Speaker": "Sasheen",
+        "Emotion": "idle",
+        "Text": "Hello! ^.^",
+        "Position": "4"
+    },
+    {
+        "Speaker": "Sasheen",
+        "Emotion": "idle",
+        "Text": "Welcome to the Sandy Sphinx! I'll be right with you.",
+        "Position": "4"
     }
 ]

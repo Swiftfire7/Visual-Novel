@@ -7,6 +7,7 @@ public class CharacterManager : Control
     public string Speaker;
     public string Emotion;
     public string Text;
+    public string Position;
     public override void _Ready()
     {
 

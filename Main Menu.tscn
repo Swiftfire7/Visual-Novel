@@ -19,7 +19,9 @@ animations = [ {
 "speed": 4.6
 } ]
 
-[node name="SceneManager" type="Node2D"]
+[node name="SceneManager" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 5 )
 
 [node name="InterfaceManager" type="CanvasLayer" parent="."]
@@ -59,7 +61,7 @@ scroll_following = true
 position = Vector2( 986, 132 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 5
+frame = 1
 playing = true
 
 [node name="Name" type="RichTextLabel" parent="InterfaceManager/DialogueManager/Popup"]
@@ -74,17 +76,43 @@ margin_bottom = 0.0220413
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "test name"
 
-[node name="CharacterManager" type="Control" parent="."]
-margin_left = 1.0
-margin_top = -1.0
-margin_right = 270.0
-margin_bottom = 440.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Tween" type="Tween" parent="InterfaceManager/DialogueManager/Popup"]
 
-[node name="Sprite" type="Sprite" parent="CharacterManager"]
-scale = Vector2( 0.472566, 0.472566 )
+[node name="CharacterSpawner" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Position2" type="TextureRect" parent="CharacterSpawner"]
+anchor_left = -0.25
+anchor_bottom = 0.738
+margin_right = -0.240021
+margin_bottom = 0.199982
 texture = ExtResource( 3 )
-centered = false
+expand = true
+
+[node name="Position3" type="TextureRect" parent="CharacterSpawner"]
+anchor_left = 1.0
+anchor_right = 1.25
+anchor_bottom = 0.738
+margin_right = -0.240112
+margin_bottom = 0.199982
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Position4" type="TextureRect" parent="CharacterSpawner"]
+anchor_left = 1.0
+anchor_right = 1.25
+anchor_bottom = 0.738
+margin_right = -0.23999
+margin_bottom = 0.199982
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Position1" type="TextureRect" parent="CharacterSpawner"]
+anchor_left = -0.25
+anchor_bottom = 0.738
+margin_right = -0.240021
+margin_bottom = 0.199982
+texture = ExtResource( 3 )
+expand = true
