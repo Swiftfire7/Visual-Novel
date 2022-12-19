@@ -9,12 +9,9 @@ public class DialogueReader : Popup
     public string dialoguePath = "Assets/Scenes/Introduction/Intro1/dialogue/dialogue.json";
     public float textSpeed = 0.05f;
     int phraseNum = 0;
-    private int numOfDialogues = 0;
     public int previousIndex = 0;
     public bool finished = false;
     public bool dialogueEnded = false;
-    private Vector2 leftSpawn = new Vector2(-256, 0);
-    private Vector2 rightSpawn = new Vector2(1024, 0);
     private Tween tween;
     private float slideSpeed = .33f;
     public AnimatedSprite Indicator;
@@ -29,6 +26,9 @@ public class DialogueReader : Popup
     public List<string> Dialogues;
     public Timer timer;
     public string currentSpeaker;
+    public string previousSpeaker;
+    public string currentPosition;
+    public string previousPosition;
     public List<CharacterManager> characterManagers;
 
 
@@ -47,10 +47,10 @@ public class DialogueReader : Popup
         GetDialogue();
     }
 
-    public void _Process()
-    {
+    //public void _Process()
+    //{
 
-    }
+    //}
 
     public void GetDialogue()
     {
@@ -67,12 +67,15 @@ public class DialogueReader : Popup
         //dialogue iterator, reset after completion
         if (phraseNum >= characterManagers.Count())
         {
-            SlideAllOff(slideSpeed);
+            characterManagers[phraseNum].SlideAllOff(slideSpeed, tween);
             this.Visible = false;
             phraseNum = 0;
+            previousIndex = 0;
             dialogueEnded = true;
             return;
         }
+        currentSpeaker = characterManagers[phraseNum].Speaker;
+        currentPosition = characterManagers[phraseNum].Position;
         //make sure dialogue stays open while there is dialogue to show
         dialogueEnded = false;
         finished = false;
@@ -83,49 +86,72 @@ public class DialogueReader : Popup
         DialogueBox.VisibleCharacters = 0;
 
         //character sprite logic
-        var speakerEmotion = characterManagers[phraseNum].Speaker + characterManagers[phraseNum].Emotion;
+        string speakerEmotion = currentSpeaker + characterManagers[phraseNum].Emotion;
 
         var img = (Texture)GD.Load("res://Assets/Scenes/Introduction/intro1/characters/" + speakerEmotion + ".png");
 
         //wire up the sprite according to the speaker's entrance position
-        spritePath = characterSpawnerPath + "/Position" + characterManagers[phraseNum].Position;
+        spritePath = characterSpawnerPath + "/Position" + currentPosition;
         characterSprite = GetNode<TextureRect>(spritePath);
-        characterSprite.Texture = img;
 
         //animation logic, only slide on if there is a new speaker or position
         //it would be a good idea to abstract this into its own class later
 
+
+
         //start of dialogue chain, move onscreen
         if (phraseNum == 0)
         {
-            SlideCharacterOn(slideSpeed, phraseNum);
+            characterSprite.Texture = img;
+            characterManagers[phraseNum].SlideCharacterOn(slideSpeed, characterSprite, tween);
         }
         //if the speaker is the same but they move, move them
-        else if (characterManagers[phraseNum].Speaker == characterManagers[previousIndex].Speaker
-        && characterManagers[phraseNum].Position != characterManagers[previousIndex].Position)
+        else if (currentSpeaker == previousSpeaker && currentPosition != previousPosition)
         {
-            SlideCharacterOff(slideSpeed, previousIndex);
-            SlideCharacterOn(slideSpeed, phraseNum);
+            characterManagers[phraseNum].SlideCharacterOff(slideSpeed, previousSprite, tween);
+            await ToSignal(GetTree().CreateTimer(slideSpeed), "timeout");
+            characterSprite.Texture = img;
+            characterManagers[phraseNum].SlideCharacterOn(slideSpeed, characterSprite, tween);
         }
-        //if the speaker is different but they're in the same spot, move them quickly
-        else if (characterManagers[phraseNum].Speaker == characterManagers[previousIndex].Speaker
-        && characterManagers[phraseNum].Position != characterManagers[previousIndex].Position)
+        //if the speaker is different but they're in the same spot, swap them quickly
+        else if (currentSpeaker != previousSpeaker && currentPosition == previousPosition)
         {
-            SlideCharacterOff(slideSpeed / 2, previousIndex);
-            SlideCharacterOn(slideSpeed / 2, phraseNum);
+            characterManagers[phraseNum].SlideCharacterOff(slideSpeed / 2, previousSprite, tween);
+            await ToSignal(GetTree().CreateTimer(slideSpeed / 2), "timeout");
+            characterSprite.Texture = img;
+            characterManagers[phraseNum].SlideCharacterOn(slideSpeed / 2, characterSprite, tween);
         }
         //if the speaker is the same and they haven't moved, don't animate anything
-        else if (characterManagers[phraseNum].Speaker == (characterManagers[phraseNum - 1].Speaker)
-           && characterManagers[phraseNum].Position == characterManagers[phraseNum - 1].Position)
+        else if (currentSpeaker == previousSpeaker && currentPosition == previousPosition)
         {
         }
-        //if the speaker is different and they're in a different spot, bring them onscreen
-        else if (characterManagers[phraseNum].Speaker != (characterManagers[phraseNum - 1].Speaker)
-           && characterManagers[phraseNum].Position != characterManagers[phraseNum - 1].Position)
+        // if the speaker is different and they're in a different spot
+        else if (currentSpeaker != previousSpeaker && currentPosition != previousPosition)
         {
-            SlideCharacterOn(slideSpeed, phraseNum);
+            //if they're onscreen and are different images
+            if (characterSprite.RectPosition != characterManagers[phraseNum].leftSpawn && characterSprite.RectPosition != characterManagers[phraseNum].rightSpawn && characterSprite.Texture != img)
+            {
+                //slide the old one off
+                characterManagers[phraseNum].SlideCharacterOff(slideSpeed, characterSprite, tween);
+                await ToSignal(GetTree().CreateTimer(slideSpeed), "timeout");
+                //bring the new one on
+                characterSprite.Texture = img;
+                characterManagers[phraseNum].SlideCharacterOn(slideSpeed, characterSprite, tween);
+            }
+            //if they're onscreen and are the same image, do nothing
+            else if (characterSprite.RectPosition != characterManagers[phraseNum].leftSpawn && characterSprite.RectPosition != characterManagers[phraseNum].rightSpawn && characterSprite.Texture == img)
+            {
+
+            }
+            //if they're offscreen
+            else if (characterSprite.RectPosition == characterManagers[phraseNum].leftSpawn || characterSprite.RectPosition == characterManagers[phraseNum].rightSpawn)
+            {
+                //bring them on
+                characterSprite.Texture = img;
+                characterManagers[phraseNum].SlideCharacterOn(slideSpeed, characterSprite, tween);
+            }
         }
-        await ToSignal(GetTree().CreateTimer(slideSpeed + .2f), "timeout");
+        await ToSignal(GetTree().CreateTimer(slideSpeed), "timeout");
 
         //print chars one by one
         while (DialogueBox.VisibleCharacters < DialogueBox.Text.Length)
@@ -138,86 +164,11 @@ public class DialogueReader : Popup
         previousSprite = characterSprite;
         previousIndex = phraseNum;
         phraseNum += 1;
+        previousSpeaker = characterManagers[phraseNum - 1].Speaker;
+        previousPosition = characterManagers[phraseNum - 1].Position;
         finished = true;
         return;
 
-    }
-    public void SlideCharacterOn(float delay, int index)
-    {
-        if (characterManagers[index].Position.ToInt() == 1)
-        {
-            //from left
-            tween.InterpolateProperty(characterSprite, "rect_position", leftSpawn, leftSpawn + (Vector2.Right * 256), delay, Tween.TransitionType.Linear, Tween.EaseType.Out);
-        }
-        if (characterManagers[index].Position.ToInt() == 2)
-        {
-            //2nd from left
-            tween.InterpolateProperty(characterSprite, "rect_position", leftSpawn, leftSpawn + (Vector2.Right * 512), delay, Tween.TransitionType.Linear, Tween.EaseType.Out);
-        }
-        else if (characterManagers[index].Position.ToInt() == 3)
-        {
-            //2nd from right
-            tween.InterpolateProperty(characterSprite, "rect_position", rightSpawn, rightSpawn + (Vector2.Left * 512), delay, Tween.TransitionType.Linear, Tween.EaseType.Out);
-        }
-        else if (characterManagers[index].Position.ToInt() == 4)
-        {
-            //from right
-            tween.InterpolateProperty(characterSprite, "rect_position", rightSpawn, rightSpawn + (Vector2.Left * 256), delay, Tween.TransitionType.Linear, Tween.EaseType.Out);
-        }
-        tween.Start();
-    }
-    public void SlideCharacterOff(float delay, int index)
-    {
-        if (characterManagers[index].Position.ToInt() == 1)
-        {
-            //from left
-            tween.InterpolateProperty(previousSprite, "rect_position", previousSprite.RectPosition, leftSpawn, delay, Tween.TransitionType.Linear, Tween.EaseType.In);
-        }
-        else if (characterManagers[index].Position.ToInt() == 2)
-        {
-            //2nd from left
-            tween.InterpolateProperty(previousSprite, "rect_position", previousSprite.RectPosition, leftSpawn, delay, Tween.TransitionType.Linear, Tween.EaseType.In);
-        }
-        else if (characterManagers[index].Position.ToInt() == 3)
-        {
-            //2nd from right
-            tween.InterpolateProperty(previousSprite, "rect_position", previousSprite.RectPosition, rightSpawn, delay, Tween.TransitionType.Linear, Tween.EaseType.In);
-        }
-        else if (characterManagers[index].Position.ToInt() == 4)
-        {
-            //from right
-            tween.InterpolateProperty(previousSprite, "rect_position", previousSprite.RectPosition, rightSpawn, delay, Tween.TransitionType.Linear, Tween.EaseType.In);
-        }
-        tween.Start();
-
-    }
-    public void SlideAllOff(float delay)
-    {
-        for (int i = 1; i < 5; i++)
-        {
-            TextureRect textureRect = GetNode<TextureRect>(characterSpawnerPath + "/Position" + i);
-            if (textureRect.Name == "Position1")
-            {
-                //from left
-                tween.InterpolateProperty(textureRect, "rect_position", textureRect.RectPosition, leftSpawn, delay, Tween.TransitionType.Linear, Tween.EaseType.In);
-            }
-            else if (textureRect.Name == "Position2")
-            {
-                //2nd from left
-                tween.InterpolateProperty(textureRect, "rect_position", textureRect.RectPosition, leftSpawn, delay, Tween.TransitionType.Linear, Tween.EaseType.In);
-            }
-            else if (textureRect.Name == "Position3")
-            {
-                //2nd from right
-                tween.InterpolateProperty(textureRect, "rect_position", textureRect.RectPosition, rightSpawn, delay, Tween.TransitionType.Linear, Tween.EaseType.In);
-            }
-            else if (textureRect.Name == "Position4")
-            {
-                //from right
-                tween.InterpolateProperty(textureRect, "rect_position", textureRect.RectPosition, rightSpawn, delay, Tween.TransitionType.Linear, Tween.EaseType.In);
-            }
-            tween.Start();
-        }
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

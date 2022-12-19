@@ -22,6 +22,8 @@ animations = [ {
 [node name="SceneManager" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
 mouse_filter = 1
 script = ExtResource( 5 )
 
@@ -551,7 +553,7 @@ scroll_following = true
 position = Vector2( 986, 132 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 4
+frame = 3
 playing = true
 
 [node name="Name" type="RichTextLabel" parent="DialogueManager/Popup"]
