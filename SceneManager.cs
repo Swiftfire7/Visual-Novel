@@ -5,6 +5,7 @@ public class SceneManager : Control
 {
     public bool SceneStarted = false;
     public bool MenuIsUp = true;
+    private bool enabled = false;
     DialogueReader dialogueReader;
     Button button;
     public static SceneManager GlobalSceneManager;
@@ -31,15 +32,18 @@ public class SceneManager : Control
         {
             if (dialogueReader.finished)
             {
+                //allow continuation once printing ends
                 dialogueReader.NextPhrase();
             }
             else
             {
+                //print full dialogue line
                 dialogueReader.DialogueBox.VisibleCharacters = dialogueReader.DialogueBox.Text.Length;
             }
             if (dialogueReader.dialogueEnded)
             {
                 SceneStarted = false;
+                button.Show();
             }
         }
         if (Input.IsActionJustPressed("ui_accept") && SceneStarted == false && MenuIsUp == false)
@@ -64,6 +68,24 @@ public class SceneManager : Control
     public void OnStartButtonPressed()
     {
         TextureRect background = GetNode<TextureRect>("Background");
+    }
+    public void OnNextButton()
+    {
+        if (dialogueReader.finished)
+        {
+            //allow continuation once printing ends
+            dialogueReader.NextPhrase();
+        }
+        else
+        {
+            //print full dialogue line
+            dialogueReader.DialogueBox.VisibleCharacters = dialogueReader.DialogueBox.Text.Length;
+        }
+        if (dialogueReader.dialogueEnded)
+        {
+            SceneStarted = false;
+            button.Show();
+        }
     }
     public void ShowDialogueElement()
     {

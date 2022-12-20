@@ -2,7 +2,7 @@
     {
         "Speaker": "Midna",
         "Emotion": "idle",
-        "Text": "(This is definitely the right town. Where's the tavern?)",
+        "Text": "(This is definitely the right town. Which building could be the tavern?)",
         "Position": "1"
     },
     {
@@ -20,13 +20,19 @@
     {
         "Speaker": "Midna",
         "Emotion": "idle",
-        "Text": "(knock knock) Salutations, is this tavern outsiders were directed to gather at?",
+        "Text": "(knock knock) Salutations, is this the tavern outsiders were directed to gather at?",
         "Position": "1"
     },
     {
-        "Speaker": "Sasheenhood",
-        "Emotion": "idle",
-        "Text": "Why yes it is! Welcome to the Sandy Sphinx! I'll be right with you, please let me find you a seat.",
+        "Speaker": "Sasheen",
+        "Emotion": "hoodidle",
+        "Text": "Why yes it is! Welcome to the Sandy Sphinx!",
+        "Position": "4"
+    },
+    {
+        "Speaker": "Sasheen",
+        "Emotion": "hoodidle",
+        "Text": " I'll be right with you, please let me find you a seat.",
         "Position": "4"
     },
     {
@@ -104,7 +110,7 @@
     {
         "Speaker": " ",
         "Emotion": "idle",
-        "Text": "To be Continued.../npress enter or space to replay",
+        "Text": "To be Continued...",
         "Position": "3"
     }
 ]

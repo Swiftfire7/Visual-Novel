@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/backgrounds/diffused menu scroll.png" type="Texture" id=1]
 [ext_resource path="res://MenuManager.cs" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Assets/UI/next icon1.png" type="Texture" id=8]
 [ext_resource path="res://Assets/UI/next icon2.png" type="Texture" id=9]
 [ext_resource path="res://DialogueReader.cs" type="Script" id=10]
+[ext_resource path="res://EventLogger.cs" type="Script" id=11]
+[ext_resource path="res://BiographyManager.cs" type="Script" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -535,14 +537,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Dialogue" type="RichTextLabel" parent="DialogueManager/Popup"]
-anchor_left = 0.027
-anchor_top = 0.184
-anchor_right = 0.99
-anchor_bottom = 0.81
-margin_left = 0.351999
-margin_top = -0.0720139
-margin_right = 0.239929
-margin_bottom = 0.0199432
+anchor_left = 0.148
+anchor_top = 0.234
+anchor_right = 0.917
+anchor_bottom = 0.722
+margin_left = 0.447998
+margin_top = 0.0279846
+margin_right = -0.00805664
+margin_bottom = -0.0760574
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "this is the example text"
 scroll_following = true
@@ -557,18 +559,109 @@ frame = 3
 playing = true
 
 [node name="Name" type="RichTextLabel" parent="DialogueManager/Popup"]
-anchor_left = 0.021
-anchor_top = 0.057
-anchor_right = 0.143
-anchor_bottom = 0.278
-margin_left = -0.504002
-margin_top = -0.00600433
-margin_right = -0.432007
-margin_bottom = 0.0759773
+anchor_left = 0.077
+anchor_top = 0.063
+anchor_right = 0.403
+anchor_bottom = 0.228
+margin_left = 0.151993
+margin_top = 0.0459957
+margin_right = 0.327972
+margin_bottom = -0.0240173
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "test name"
 
 [node name="Tween" type="Tween" parent="DialogueManager/Popup"]
+
+[node name="Biography" type="Button" parent="DialogueManager/Popup"]
+anchor_left = 0.455
+anchor_top = 0.063
+anchor_right = 0.56
+anchor_bottom = 0.19
+margin_left = 0.0799866
+margin_top = 0.0460567
+margin_right = -0.440002
+margin_bottom = -0.0199528
+text = "Biography"
+script = ExtResource( 12 )
+
+[node name="Popup" type="Popup" parent="DialogueManager/Popup/Biography"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Fast Forward" type="Button" parent="DialogueManager/Popup"]
+anchor_left = 0.897
+anchor_top = 0.373
+anchor_right = 0.987
+anchor_bottom = 0.519
+margin_left = -324.528
+margin_top = 68.066
+margin_right = -324.688
+margin_bottom = 67.998
+text = "Fast Forward"
+
+[node name="Event" type="Button" parent="DialogueManager/Popup"]
+anchor_left = 0.798
+anchor_top = 0.816
+anchor_right = 0.869
+anchor_bottom = 0.943
+margin_left = -0.152039
+margin_top = 0.0720062
+margin_right = 0.143982
+margin_bottom = 0.0059967
+text = "Event Log"
+script = ExtResource( 11 )
+
+[node name="Popup" type="Popup" parent="DialogueManager/Popup/Event"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Skip" type="Button" parent="DialogueManager/Popup"]
+anchor_left = 0.36
+anchor_top = 0.81
+anchor_right = 0.438
+anchor_bottom = 0.956
+margin_left = 0.359985
+margin_top = 0.0200043
+margin_right = 0.487976
+margin_bottom = -0.0480042
+text = "Skip Scene"
+
+[node name="Area Info" type="Button" parent="DialogueManager/Popup"]
+anchor_left = 0.155
+anchor_top = 0.829
+anchor_right = 0.245
+anchor_bottom = 0.956
+margin_left = 0.279999
+margin_top = 0.0179443
+margin_right = 0.119995
+margin_bottom = -0.0480652
+text = "Area Info"
+
+[node name="Popup" type="Popup" parent="DialogueManager/Popup/Area Info"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Autoplay" type="Button" parent="DialogueManager/Popup"]
+anchor_left = 0.921
+anchor_top = 0.361
+anchor_right = 0.985
+anchor_bottom = 0.487
+margin_left = -0.104065
+margin_top = -0.0379677
+margin_right = 0.359924
+margin_bottom = 0.0540314
+text = "autoplay"
+
+[node name="Next" type="Button" parent="DialogueManager/Popup"]
+anchor_left = 0.902
+anchor_top = 0.816
+anchor_right = 0.941
+anchor_bottom = 0.943
+margin_left = 0.351929
+margin_top = 0.0720062
+margin_right = 0.415955
+margin_bottom = 0.0059967
+text = "next"
 
 [node name="CharacterSpawner" type="Control" parent="."]
 anchor_right = 1.0
@@ -613,3 +706,5 @@ expand = true
 [connection signal="button_up" from="Background/MenuManager/Scene Select/Volume Select7" to="Background/MenuManager" method="OnScene1"]
 [connection signal="button_up" from="Background/MenuManager/Chapter Select/Volume Select7" to="Background/MenuManager" method="OnChapter1"]
 [connection signal="button_up" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume1"]
+[connection signal="button_down" from="DialogueManager/Popup/Autoplay" to="DialogueManager/Popup" method="OnAutoButton"]
+[connection signal="button_down" from="DialogueManager/Popup/Next" to="." method="OnNextButton"]

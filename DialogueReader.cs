@@ -7,12 +7,14 @@ using System.Linq;
 public class DialogueReader : Popup
 {
     public string dialoguePath = "Assets/Scenes/Introduction/Intro1/dialogue/dialogue.json";
-    public float textSpeed = 0.05f;
+    public float textSpeed = 0.03f;
     int phraseNum = 0;
     public int previousIndex = 0;
     public bool finished = false;
     public bool dialogueEnded = false;
     private Tween tween;
+    private bool auto = false;
+    private float autoSpeed = 0f;
     private float slideSpeed = .33f;
     public AnimatedSprite Indicator;
     private TextureRect previousSprite;
@@ -67,7 +69,7 @@ public class DialogueReader : Popup
         //dialogue iterator, reset after completion
         if (phraseNum >= characterManagers.Count())
         {
-            characterManagers[phraseNum].SlideAllOff(slideSpeed, tween);
+            characterManagers[phraseNum - 1].SlideAllOff(slideSpeed, tween);
             this.Visible = false;
             phraseNum = 0;
             previousIndex = 0;
@@ -96,8 +98,6 @@ public class DialogueReader : Popup
 
         //animation logic, only slide on if there is a new speaker or position
         //it would be a good idea to abstract this into its own class later
-
-
 
         //start of dialogue chain, move onscreen
         if (phraseNum == 0)
@@ -152,11 +152,16 @@ public class DialogueReader : Popup
             }
         }
         await ToSignal(GetTree().CreateTimer(slideSpeed), "timeout");
-
+        //check for autoplay value
+        if (auto)
+        {
+            SetAutoSpeed();
+        }
         //print chars one by one
-        while (DialogueBox.VisibleCharacters < DialogueBox.Text.Length)
+        while (DialogueBox.VisibleCharacters < DialogueBox.Text.Length || autoSpeed != 0)
         {
             DialogueBox.VisibleCharacters += 1;
+            UpdateAutoSpeed();
             timer.Start();
             await ToSignal(timer, "timeout");
         }
@@ -167,8 +172,41 @@ public class DialogueReader : Popup
         previousSpeaker = characterManagers[phraseNum - 1].Speaker;
         previousPosition = characterManagers[phraseNum - 1].Position;
         finished = true;
+        //continue if autoplaying
+        if (auto)
+        {
+            NextPhrase();
+        }
         return;
 
+    }
+    public void OnAutoButton()
+    {
+        auto = !auto;
+    }
+    public void SetAutoSpeed()
+    {
+        autoSpeed = DialogueBox.Text.Length * textSpeed;
+        autoSpeed = autoSpeed + 2f;
+        if (autoSpeed < 1.2f)
+        {
+            autoSpeed = 1.2f;
+        }
+    }
+    public void UpdateAutoSpeed()
+    {
+        if (auto)
+        {
+            autoSpeed = autoSpeed - textSpeed;
+            if (autoSpeed < 0)
+            {
+                autoSpeed = 0;
+            }
+        }
+        else
+        {
+            autoSpeed = 0;
+        }
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
