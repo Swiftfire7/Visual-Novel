@@ -31,6 +31,8 @@ public class DialogueReader : Popup
     public string previousSpeaker;
     public string currentPosition;
     public string previousPosition;
+    public AnimationManager animationManager;
+    public FastManager fastManager;
     public List<CharacterManager> characterManagers;
 
 
@@ -45,7 +47,9 @@ public class DialogueReader : Popup
         DialogueBox.BbcodeEnabled = true;
         Indicator = GetNode<AnimatedSprite>("AnimatedSprite");
         characterSpawner = GetNode<Control>(characterSpawnerPath);
+        animationManager = GetNode<AnimationManager>("../../Background/");
         tween = GetNode<Tween>("Tween");
+        fastManager = GetNode<FastManager>("Fast Forward");
         GetDialogue();
     }
 
@@ -69,7 +73,7 @@ public class DialogueReader : Popup
         //dialogue iterator, reset after completion
         if (phraseNum >= characterManagers.Count())
         {
-            characterManagers[phraseNum - 1].SlideAllOff(slideSpeed, tween);
+            animationManager.SlideAllOff(slideSpeed, tween);
             this.Visible = false;
             phraseNum = 0;
             previousIndex = 0;
@@ -84,9 +88,14 @@ public class DialogueReader : Popup
         //text box logic
         Speaker.BbcodeText = characterManagers[phraseNum].Speaker;
         DialogueBox.BbcodeText = characterManagers[phraseNum].Text;
-
-        DialogueBox.VisibleCharacters = 0;
-
+        if (fastManager.FastPressed)
+        {
+            DialogueBox.VisibleCharacters = DialogueBox.Text.Length;
+        }
+        else
+        {
+            DialogueBox.VisibleCharacters = 0;
+        }
         //character sprite logic
         string speakerEmotion = currentSpeaker + characterManagers[phraseNum].Emotion;
 
@@ -103,23 +112,23 @@ public class DialogueReader : Popup
         if (phraseNum == 0)
         {
             characterSprite.Texture = img;
-            characterManagers[phraseNum].SlideCharacterOn(slideSpeed, characterSprite, tween);
+            animationManager.SlideCharacterOn(slideSpeed, characterSprite, tween, characterManagers[phraseNum]);
         }
         //if the speaker is the same but they move, move them
         else if (currentSpeaker == previousSpeaker && currentPosition != previousPosition)
         {
-            characterManagers[phraseNum].SlideCharacterOff(slideSpeed, previousSprite, tween);
+            animationManager.SlideCharacterOff(slideSpeed, previousSprite, tween, characterManagers[phraseNum]);
             await ToSignal(GetTree().CreateTimer(slideSpeed), "timeout");
             characterSprite.Texture = img;
-            characterManagers[phraseNum].SlideCharacterOn(slideSpeed, characterSprite, tween);
+            animationManager.SlideCharacterOn(slideSpeed, characterSprite, tween, characterManagers[phraseNum]);
         }
         //if the speaker is different but they're in the same spot, swap them quickly
         else if (currentSpeaker != previousSpeaker && currentPosition == previousPosition)
         {
-            characterManagers[phraseNum].SlideCharacterOff(slideSpeed / 2, previousSprite, tween);
+            animationManager.SlideCharacterOff(slideSpeed / 2, previousSprite, tween, characterManagers[phraseNum]);
             await ToSignal(GetTree().CreateTimer(slideSpeed / 2), "timeout");
             characterSprite.Texture = img;
-            characterManagers[phraseNum].SlideCharacterOn(slideSpeed / 2, characterSprite, tween);
+            animationManager.SlideCharacterOn(slideSpeed / 2, characterSprite, tween, characterManagers[phraseNum]);
         }
         //if the speaker is the same and they haven't moved, don't animate anything
         else if (currentSpeaker == previousSpeaker && currentPosition == previousPosition)
@@ -129,26 +138,26 @@ public class DialogueReader : Popup
         else if (currentSpeaker != previousSpeaker && currentPosition != previousPosition)
         {
             //if they're onscreen and are different images
-            if (characterSprite.RectPosition != characterManagers[phraseNum].leftSpawn && characterSprite.RectPosition != characterManagers[phraseNum].rightSpawn && characterSprite.Texture != img)
+            if (characterSprite.RectPosition != animationManager.leftSpawn && characterSprite.RectPosition != animationManager.rightSpawn && characterSprite.Texture != img)
             {
                 //slide the old one off
-                characterManagers[phraseNum].SlideCharacterOff(slideSpeed, characterSprite, tween);
+                animationManager.SlideCharacterOff(slideSpeed, characterSprite, tween, characterManagers[phraseNum]);
                 await ToSignal(GetTree().CreateTimer(slideSpeed), "timeout");
                 //bring the new one on
                 characterSprite.Texture = img;
-                characterManagers[phraseNum].SlideCharacterOn(slideSpeed, characterSprite, tween);
+                animationManager.SlideCharacterOn(slideSpeed, characterSprite, tween, characterManagers[phraseNum]);
             }
             //if they're onscreen and are the same image, do nothing
-            else if (characterSprite.RectPosition != characterManagers[phraseNum].leftSpawn && characterSprite.RectPosition != characterManagers[phraseNum].rightSpawn && characterSprite.Texture == img)
+            else if (characterSprite.RectPosition != animationManager.leftSpawn && characterSprite.RectPosition != animationManager.rightSpawn && characterSprite.Texture == img)
             {
 
             }
             //if they're offscreen
-            else if (characterSprite.RectPosition == characterManagers[phraseNum].leftSpawn || characterSprite.RectPosition == characterManagers[phraseNum].rightSpawn)
+            else if (characterSprite.RectPosition == animationManager.leftSpawn || characterSprite.RectPosition == animationManager.rightSpawn)
             {
                 //bring them on
                 characterSprite.Texture = img;
-                characterManagers[phraseNum].SlideCharacterOn(slideSpeed, characterSprite, tween);
+                animationManager.SlideCharacterOn(slideSpeed, characterSprite, tween, characterManagers[phraseNum]);
             }
         }
         await ToSignal(GetTree().CreateTimer(slideSpeed), "timeout");
@@ -157,13 +166,27 @@ public class DialogueReader : Popup
         {
             SetAutoSpeed();
         }
-        //print chars one by one
-        while (DialogueBox.VisibleCharacters < DialogueBox.Text.Length || autoSpeed != 0)
+        //check for fastforward and progress ASAP if active
+        if (fastManager.FastPressed)
         {
-            DialogueBox.VisibleCharacters += 1;
-            UpdateAutoSpeed();
-            timer.Start();
-            await ToSignal(timer, "timeout");
+            DialogueBox.VisibleCharacters = DialogueBox.Text.Length;
+        }
+        else
+        {
+            //print chars one by one
+            while (DialogueBox.VisibleCharacters < DialogueBox.Text.Length || autoSpeed != 0)
+            {
+                DialogueBox.VisibleCharacters += 1;
+                UpdateAutoSpeed();
+                timer.Start();
+                await ToSignal(timer, "timeout");
+                //print all if fastforward starts
+                if (fastManager.FastPressed)
+                {
+                    DialogueBox.VisibleCharacters = DialogueBox.Text.Length;
+                    autoSpeed = 0;
+                }
+            }
         }
         //hold previous values, iterate, and allow progression
         previousSprite = characterSprite;
@@ -174,6 +197,11 @@ public class DialogueReader : Popup
         finished = true;
         //continue if autoplaying
         if (auto)
+        {
+            NextPhrase();
+        }
+        //or if fast forwarding
+        if (fastManager.FastPressed)
         {
             NextPhrase();
         }

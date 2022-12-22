@@ -8,8 +8,6 @@ public class CharacterManager : Control
     public string Emotion;
     public string Text;
     public string Position;
-    public Vector2 leftSpawn = new Vector2(-256, 0);
-    public Vector2 rightSpawn = new Vector2(1024, 0);
     public override void _Ready()
     {
     }
@@ -18,82 +16,6 @@ public class CharacterManager : Control
         dialogueReader.NextPhrase();
     }
 
-    public void SlideCharacterOn(float delay, TextureRect sprite, Tween tween)
-    {
-        if (Position.ToInt() == 1)
-        {
-            //from left
-            tween.InterpolateProperty(sprite, "rect_position", leftSpawn, leftSpawn + (Vector2.Right * 256), delay, Tween.TransitionType.Circ, Tween.EaseType.Out);
-        }
-        else if (Position.ToInt() == 2)
-        {
-            //2nd from left
-            tween.InterpolateProperty(sprite, "rect_position", leftSpawn, leftSpawn + (Vector2.Right * 512), delay, Tween.TransitionType.Circ, Tween.EaseType.Out);
-        }
-        else if (Position.ToInt() == 3)
-        {
-            //2nd from right
-            tween.InterpolateProperty(sprite, "rect_position", rightSpawn, rightSpawn + (Vector2.Left * 512), delay, Tween.TransitionType.Circ, Tween.EaseType.Out);
-        }
-        else if (Position.ToInt() == 4)
-        {
-            //from right
-            tween.InterpolateProperty(sprite, "rect_position", rightSpawn, rightSpawn + (Vector2.Left * 256), delay, Tween.TransitionType.Circ, Tween.EaseType.Out);
-        }
-        tween.Start();
-    }
-    public void SlideCharacterOff(float delay, TextureRect sprite, Tween tween)
-    {
-        if (Position.ToInt() == 1)
-        {
-            //from left
-            tween.InterpolateProperty(sprite, "rect_position", sprite.RectPosition, leftSpawn, delay, Tween.TransitionType.Circ, Tween.EaseType.In);
-        }
-        else if (Position.ToInt() == 2)
-        {
-            //2nd from left
-            tween.InterpolateProperty(sprite, "rect_position", sprite.RectPosition, leftSpawn, delay, Tween.TransitionType.Circ, Tween.EaseType.In);
-        }
-        else if (Position.ToInt() == 3)
-        {
-            //2nd from right
-            tween.InterpolateProperty(sprite, "rect_position", sprite.RectPosition, rightSpawn, delay, Tween.TransitionType.Circ, Tween.EaseType.In);
-        }
-        else if (Position.ToInt() == 4)
-        {
-            //from right
-            tween.InterpolateProperty(sprite, "rect_position", sprite.RectPosition, rightSpawn, delay, Tween.TransitionType.Circ, Tween.EaseType.In);
-        }
-        tween.Start();
-    }
-    public void SlideAllOff(float delay, Tween tween)
-    {
-        for (int i = 1; i < 5; i++)
-        {
-            TextureRect textureRect = GetNode<TextureRect>("Position" + i);
-            if (textureRect.Name == "Position1")
-            {
-                //far left
-                tween.InterpolateProperty(textureRect, "rect_position", textureRect.RectPosition, leftSpawn, delay, Tween.TransitionType.Circ, Tween.EaseType.In);
-            }
-            else if (textureRect.Name == "Position2")
-            {
-                //2nd from left
-                tween.InterpolateProperty(textureRect, "rect_position", textureRect.RectPosition, leftSpawn, delay, Tween.TransitionType.Circ, Tween.EaseType.In);
-            }
-            else if (textureRect.Name == "Position3")
-            {
-                //2nd from right
-                tween.InterpolateProperty(textureRect, "rect_position", textureRect.RectPosition, rightSpawn, delay, Tween.TransitionType.Circ, Tween.EaseType.In);
-            }
-            else if (textureRect.Name == "Position4")
-            {
-                //far right
-                tween.InterpolateProperty(textureRect, "rect_position", textureRect.RectPosition, rightSpawn, delay, Tween.TransitionType.Circ, Tween.EaseType.In);
-            }
-            tween.Start();
-        }
-    }
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)
     //  {

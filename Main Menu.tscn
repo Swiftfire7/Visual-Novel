@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/backgrounds/diffused menu scroll.png" type="Texture" id=1]
 [ext_resource path="res://MenuManager.cs" type="Script" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://DialogueReader.cs" type="Script" id=10]
 [ext_resource path="res://EventLogger.cs" type="Script" id=11]
 [ext_resource path="res://BiographyManager.cs" type="Script" id=12]
+[ext_resource path="res://AnimationManager.cs" type="Script" id=13]
+[ext_resource path="res://FastManager.cs" type="Script" id=14]
+[ext_resource path="res://AutoplayManager.cs" type="Script" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -32,8 +35,11 @@ script = ExtResource( 5 )
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
 texture = ExtResource( 1 )
 expand = true
+script = ExtResource( 13 )
 
 [node name="MenuManager" type="Control" parent="Background"]
 anchor_right = 1.0
@@ -555,7 +561,6 @@ scroll_following = true
 position = Vector2( 986, 132 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 3
 playing = true
 
 [node name="Name" type="RichTextLabel" parent="DialogueManager/Popup"]
@@ -589,15 +594,16 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Fast Forward" type="Button" parent="DialogueManager/Popup"]
-anchor_left = 0.897
-anchor_top = 0.373
-anchor_right = 0.987
-anchor_bottom = 0.519
-margin_left = -324.528
-margin_top = 68.066
-margin_right = -324.688
-margin_bottom = 67.998
+anchor_left = 0.58
+anchor_top = 0.804
+anchor_right = 0.67
+anchor_bottom = 0.949
+margin_left = 0.0799561
+margin_top = -0.0320282
+margin_right = -0.0800171
+margin_bottom = 0.0579681
 text = "Fast Forward"
+script = ExtResource( 14 )
 
 [node name="Event" type="Button" parent="DialogueManager/Popup"]
 anchor_left = 0.798
@@ -651,6 +657,7 @@ margin_top = -0.0379677
 margin_right = 0.359924
 margin_bottom = 0.0540314
 text = "autoplay"
+script = ExtResource( 15 )
 
 [node name="Next" type="Button" parent="DialogueManager/Popup"]
 anchor_left = 0.902
@@ -706,5 +713,6 @@ expand = true
 [connection signal="button_up" from="Background/MenuManager/Scene Select/Volume Select7" to="Background/MenuManager" method="OnScene1"]
 [connection signal="button_up" from="Background/MenuManager/Chapter Select/Volume Select7" to="Background/MenuManager" method="OnChapter1"]
 [connection signal="button_up" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume1"]
+[connection signal="button_down" from="DialogueManager/Popup/Fast Forward" to="DialogueManager/Popup/Fast Forward" method="OnFastButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Autoplay" to="DialogueManager/Popup" method="OnAutoButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Next" to="." method="OnNextButton"]

@@ -4,7 +4,9 @@ using System;
 public class MenuManager : Control
 {
     private string backgroundPath = "res://Assets/";
-    string selectedPath = "";
+    private string volumePath = "";
+    private string chapterPath = "";
+    string selectedScenePath = "";
     ColorRect colorRect;
     TextureRect background;
     SceneManager sceneManager;
@@ -21,7 +23,7 @@ public class MenuManager : Control
         colorRect.Hide();
         colorRect = GetNode<ColorRect>("Chapter Select");
         colorRect.Show();
-        selectedPath = backgroundPath + "Scenes/";
+        volumePath = backgroundPath + "Scenes/";
     }
     public void OnChapter1()
     {
@@ -29,15 +31,15 @@ public class MenuManager : Control
         colorRect.Hide();
         colorRect = GetNode<ColorRect>("Scene Select");
         colorRect.Show();
-        selectedPath = selectedPath + "Introduction/";
+        chapterPath = "Introduction/";
     }
     public void OnScene1()
     {
         sceneManager.MenuIsUp = false;
         colorRect = GetNode<ColorRect>("Scene Select");
         colorRect.Hide();
-        selectedPath = selectedPath + ("intro1/");
-        var img = (Texture)GD.Load(selectedPath + "scenery/Sandtown.png");
+        selectedScenePath = volumePath + chapterPath + ("intro1/");
+        var img = (Texture)GD.Load(selectedScenePath + "scenery/Sandtown.png");
         background.Texture = img;
         Button instructions = GetNode<Button>("instructions");
         instructions.Show();
