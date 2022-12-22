@@ -714,5 +714,5 @@ expand = true
 [connection signal="button_up" from="Background/MenuManager/Chapter Select/Volume Select7" to="Background/MenuManager" method="OnChapter1"]
 [connection signal="button_up" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume1"]
 [connection signal="button_down" from="DialogueManager/Popup/Fast Forward" to="DialogueManager/Popup/Fast Forward" method="OnFastButton"]
-[connection signal="button_down" from="DialogueManager/Popup/Autoplay" to="DialogueManager/Popup" method="OnAutoButton"]
+[connection signal="button_down" from="DialogueManager/Popup/Autoplay" to="DialogueManager/Popup/Autoplay" method="OnAutoButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Next" to="." method="OnNextButton"]

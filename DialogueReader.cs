@@ -13,8 +13,6 @@ public class DialogueReader : Popup
     public bool finished = false;
     public bool dialogueEnded = false;
     private Tween tween;
-    private bool auto = false;
-    private float autoSpeed = 0f;
     private float slideSpeed = .33f;
     public AnimatedSprite Indicator;
     private TextureRect previousSprite;
@@ -33,6 +31,7 @@ public class DialogueReader : Popup
     public string previousPosition;
     public AnimationManager animationManager;
     public FastManager fastManager;
+    public AutoplayManager autoplayManager;
     public List<CharacterManager> characterManagers;
 
 
@@ -50,6 +49,7 @@ public class DialogueReader : Popup
         animationManager = GetNode<AnimationManager>("../../Background/");
         tween = GetNode<Tween>("Tween");
         fastManager = GetNode<FastManager>("Fast Forward");
+        autoplayManager = GetNode<AutoplayManager>("Autoplay");
         GetDialogue();
     }
 
@@ -162,9 +162,9 @@ public class DialogueReader : Popup
         }
         await ToSignal(GetTree().CreateTimer(slideSpeed), "timeout");
         //check for autoplay value
-        if (auto)
+        if (autoplayManager.Auto)
         {
-            SetAutoSpeed();
+            autoplayManager.SetAutoSpeed();
         }
         //check for fastforward and progress ASAP if active
         if (fastManager.FastPressed)
@@ -174,17 +174,17 @@ public class DialogueReader : Popup
         else
         {
             //print chars one by one
-            while (DialogueBox.VisibleCharacters < DialogueBox.Text.Length || autoSpeed != 0)
+            while (DialogueBox.VisibleCharacters < DialogueBox.Text.Length || autoplayManager.AutoSpeed != 0)
             {
                 DialogueBox.VisibleCharacters += 1;
-                UpdateAutoSpeed();
+                autoplayManager.UpdateAutoSpeed();
                 timer.Start();
                 await ToSignal(timer, "timeout");
                 //print all if fastforward starts
                 if (fastManager.FastPressed)
                 {
                     DialogueBox.VisibleCharacters = DialogueBox.Text.Length;
-                    autoSpeed = 0;
+                    autoplayManager.AutoSpeed = 0;
                 }
             }
         }
@@ -196,7 +196,7 @@ public class DialogueReader : Popup
         previousPosition = characterManagers[phraseNum - 1].Position;
         finished = true;
         //continue if autoplaying
-        if (auto)
+        if (autoplayManager.Auto)
         {
             NextPhrase();
         }
@@ -207,34 +207,6 @@ public class DialogueReader : Popup
         }
         return;
 
-    }
-    public void OnAutoButton()
-    {
-        auto = !auto;
-    }
-    public void SetAutoSpeed()
-    {
-        autoSpeed = DialogueBox.Text.Length * textSpeed;
-        autoSpeed = autoSpeed + 2f;
-        if (autoSpeed < 1.2f)
-        {
-            autoSpeed = 1.2f;
-        }
-    }
-    public void UpdateAutoSpeed()
-    {
-        if (auto)
-        {
-            autoSpeed = autoSpeed - textSpeed;
-            if (autoSpeed < 0)
-            {
-                autoSpeed = 0;
-            }
-        }
-        else
-        {
-            autoSpeed = 0;
-        }
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
