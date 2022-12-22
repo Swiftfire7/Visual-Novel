@@ -33,6 +33,7 @@ public class DialogueReader : Popup
     public FastManager fastManager;
     public AutoplayManager autoplayManager;
     public List<CharacterManager> characterManagers;
+    SceneManager scene;
 
 
     // Called when the node enters the scene tree for the first time.
@@ -50,6 +51,7 @@ public class DialogueReader : Popup
         tween = GetNode<Tween>("Tween");
         fastManager = GetNode<FastManager>("Fast Forward");
         autoplayManager = GetNode<AutoplayManager>("Autoplay");
+        scene = GetNode<SceneManager>("../../");
         GetDialogue();
     }
 

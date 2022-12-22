@@ -62,7 +62,7 @@ public class AnimationManager : TextureRect
     {
         for (int i = 1; i < 5; i++)
         {
-            TextureRect textureRect = GetNode<TextureRect>("/SceneManager/CharacterSpawner/Position" + i);
+            TextureRect textureRect = GetNode<TextureRect>("/root/SceneManager/CharacterSpawner/Position" + i);
             if (textureRect.Name == "Position1")
             {
                 //far left

@@ -6,6 +6,8 @@ public class SceneManager : Control
     public bool SceneStarted = false;
     public bool MenuIsUp = true;
     private bool enabled = false;
+    FastManager fastManager;
+    AnimationManager animationManager;
     DialogueReader dialogueReader;
     Button button;
     public static SceneManager GlobalSceneManager;
@@ -21,13 +23,14 @@ public class SceneManager : Control
         {
             QueueFree();
         }
+        fastManager = GetNode<FastManager>("DialogueManager/Popup/Fast Forward");
         dialogueReader = GetNode<DialogueReader>("DialogueManager/Popup");
+        animationManager = GetNode<AnimationManager>("Background");
         button = GetNode<Button>("Background/MenuManager/instructions");
     }
     public override void _Process(float delta)
     {
         dialogueReader.Indicator.Visible = dialogueReader.finished;
-
         if (Input.IsActionJustPressed("ui_right") && SceneStarted == true)
         {
             if (dialogueReader.finished)
@@ -40,19 +43,20 @@ public class SceneManager : Control
                 //print full dialogue line
                 dialogueReader.DialogueBox.VisibleCharacters = dialogueReader.DialogueBox.Text.Length;
             }
-            if (dialogueReader.dialogueEnded)
-            {
-                SceneStarted = false;
-                button.Show();
-            }
         }
-        if (Input.IsActionJustPressed("ui_accept") && SceneStarted == false && MenuIsUp == false)
+        else if (Input.IsActionJustPressed("ui_accept") && SceneStarted == false && MenuIsUp == false)
         {
             //find the scene's character dialogue and UI, then display the dialogue
             Node obj = GetNode<Node>("CharacterSpawner");
             showDialogueBox(obj);
             button.Hide();
             SceneStarted = true;
+        }
+        else if (dialogueReader.dialogueEnded)
+        {
+            SceneStarted = false;
+            fastManager.FastPressed = false;
+            button.Show();
         }
     }
     private void showDialogueBox(Node obj)
