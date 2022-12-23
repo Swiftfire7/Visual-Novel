@@ -23,7 +23,7 @@ public class SceneManager : Control
         {
             QueueFree();
         }
-        fastManager = GetNode<FastManager>("DialogueManager/Popup/Fast Forward");
+        fastManager = GetNode<FastManager>("DialogueManager/Popup/FastForward");
         dialogueReader = GetNode<DialogueReader>("DialogueManager/Popup");
         animationManager = GetNode<AnimationManager>("Background");
         button = GetNode<Button>("Background/MenuManager/instructions");

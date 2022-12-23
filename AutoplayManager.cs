@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class AutoplayManager : Button
+public class AutoplayManager : ColorRect
 {
     private DialogueReader dialogueReader;
     public bool Auto = false;

@@ -45,12 +45,12 @@ public class DialogueReader : Popup
         Speaker.BbcodeEnabled = true;
         DialogueBox = GetNode<RichTextLabel>("Dialogue");
         DialogueBox.BbcodeEnabled = true;
-        Indicator = GetNode<AnimatedSprite>("AnimatedSprite");
+        Indicator = GetNode<AnimatedSprite>("Next/AnimatedSprite");
         characterSpawner = GetNode<Control>(characterSpawnerPath);
         animationManager = GetNode<AnimationManager>("../../Background/");
         tween = GetNode<Tween>("Tween");
-        fastManager = GetNode<FastManager>("Fast Forward");
-        autoplayManager = GetNode<AutoplayManager>("Autoplay");
+        fastManager = GetNode<FastManager>("FastForward");
+        autoplayManager = GetNode<AutoplayManager>("AutoPlay");
         scene = GetNode<SceneManager>("../../");
         GetDialogue();
     }

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class FastManager : Button
+public class FastManager : ColorRect
 {
     DialogueReader dialogueReader;
     public bool FastPressed = false;

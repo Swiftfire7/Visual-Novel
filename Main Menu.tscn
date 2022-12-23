@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/backgrounds/diffused menu scroll.png" type="Texture" id=1]
 [ext_resource path="res://MenuManager.cs" type="Script" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://AnimationManager.cs" type="Script" id=13]
 [ext_resource path="res://FastManager.cs" type="Script" id=14]
 [ext_resource path="res://AutoplayManager.cs" type="Script" id=15]
+[ext_resource path="res://Assets/UI/leaf emroidery.png" type="Texture" id=16]
+[ext_resource path="res://Assets/UI/scroll2.png" type="Texture" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -538,137 +540,313 @@ anchor_bottom = 1.0
 margin_top = -0.200043
 script = ExtResource( 10 )
 
-[node name="ColorRect" type="ColorRect" parent="DialogueManager/Popup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="TextureRect" type="TextureRect" parent="DialogueManager/Popup"]
+anchor_right = 1.001
+anchor_bottom = 0.994
+margin_left = -1.0
+margin_top = -27.0
+margin_right = -1.02405
+margin_bottom = -0.052063
+texture = ExtResource( 17 )
+expand = true
 
 [node name="Dialogue" type="RichTextLabel" parent="DialogueManager/Popup"]
-anchor_left = 0.148
-anchor_top = 0.234
-anchor_right = 0.917
-anchor_bottom = 0.722
-margin_left = 0.447998
-margin_top = 0.0279846
-margin_right = -0.00805664
-margin_bottom = -0.0760574
+anchor_left = 0.18
+anchor_top = 0.222
+anchor_right = 0.856
+anchor_bottom = 0.753
+margin_left = -0.320007
+margin_top = -0.0760155
+margin_right = 0.455933
+margin_bottom = 0.0259476
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "this is the example text"
 scroll_following = true
 
 [node name="Timer" type="Timer" parent="DialogueManager/Popup"]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="DialogueManager/Popup"]
-position = Vector2( 986, 132 )
-frames = SubResource( 1 )
-animation = "float"
-playing = true
-
 [node name="Name" type="RichTextLabel" parent="DialogueManager/Popup"]
-anchor_left = 0.077
-anchor_top = 0.063
-anchor_right = 0.403
-anchor_bottom = 0.228
-margin_left = 0.151993
-margin_top = 0.0459957
-margin_right = 0.327972
-margin_bottom = -0.0240173
+anchor_left = 0.133
+anchor_top = 0.095
+anchor_right = 0.903
+anchor_bottom = 0.259
+margin_left = -0.192001
+margin_top = -0.0100069
+margin_right = 0.327942
+margin_bottom = 0.0779839
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "test name"
 
 [node name="Tween" type="Tween" parent="DialogueManager/Popup"]
 
-[node name="Biography" type="Button" parent="DialogueManager/Popup"]
-anchor_left = 0.455
-anchor_top = 0.063
-anchor_right = 0.56
-anchor_bottom = 0.19
-margin_left = 0.0799866
-margin_top = 0.0460567
-margin_right = -0.440002
-margin_bottom = -0.0199528
-text = "Biography"
+[node name="Biography" type="ColorRect" parent="DialogueManager/Popup"]
+anchor_left = 0.104
+anchor_top = 0.766
+anchor_right = 0.202
+anchor_bottom = 1.0
+margin_left = -0.496002
+margin_top = -0.0279922
+margin_right = 0.151993
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( -17, 40.0001 )
+color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Popup" type="Popup" parent="DialogueManager/Popup/Biography"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 8.0
+margin_top = 4.99994
+margin_right = 48.0
+margin_bottom = 44.9999
 
-[node name="Fast Forward" type="Button" parent="DialogueManager/Popup"]
-anchor_left = 0.58
-anchor_top = 0.804
-anchor_right = 0.67
-anchor_bottom = 0.949
-margin_left = 0.0799561
-margin_top = -0.0320282
-margin_right = -0.0800171
-margin_bottom = 0.0579681
-text = "Fast Forward"
-script = ExtResource( 14 )
+[node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/Biography"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 16 )
+expand = true
 
-[node name="Event" type="Button" parent="DialogueManager/Popup"]
-anchor_left = 0.798
-anchor_top = 0.816
-anchor_right = 0.869
-anchor_bottom = 0.943
-margin_left = -0.152039
-margin_top = 0.0720062
-margin_right = 0.143982
-margin_bottom = 0.0059967
-text = "Event Log"
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Popup/Biography/TextureButton"]
+anchor_left = 0.178
+anchor_top = 0.333
+anchor_right = 0.976
+anchor_bottom = 0.926
+margin_left = 0.0219994
+margin_top = 0.0119925
+margin_right = -0.0100021
+margin_bottom = 0.000988007
+custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
+text = "Biography"
+scroll_active = false
+
+[node name="Event" type="ColorRect" parent="DialogueManager/Popup"]
+anchor_left = 0.325
+anchor_top = 0.772
+anchor_right = 0.424
+anchor_bottom = 1.0
+margin_left = 0.199982
+margin_top = 0.0240097
+margin_right = -0.176025
+rect_pivot_offset = Vector2( -17, 40.0001 )
+color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Popup" type="Popup" parent="DialogueManager/Popup/Event"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 8.0
+margin_top = 4.99994
+margin_right = 48.0
+margin_bottom = 44.9999
 
-[node name="Skip" type="Button" parent="DialogueManager/Popup"]
-anchor_left = 0.36
-anchor_top = 0.81
-anchor_right = 0.438
-anchor_bottom = 0.956
-margin_left = 0.359985
-margin_top = 0.0200043
-margin_right = 0.487976
-margin_bottom = -0.0480042
-text = "Skip Scene"
+[node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/Event"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 16 )
+expand = true
 
-[node name="Area Info" type="Button" parent="DialogueManager/Popup"]
-anchor_left = 0.155
-anchor_top = 0.829
-anchor_right = 0.245
-anchor_bottom = 0.956
-margin_left = 0.279999
-margin_top = 0.0179443
-margin_right = 0.119995
-margin_bottom = -0.0480652
-text = "Area Info"
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Popup/Event/TextureButton"]
+anchor_left = 0.188
+anchor_top = 0.306
+anchor_right = 0.986
+anchor_bottom = 0.926
+margin_left = 0.0120296
+margin_top = 0.984022
+margin_right = -0.0199738
+margin_bottom = 0.00101852
+custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
+text = "Event Log"
+scroll_active = false
 
-[node name="Popup" type="Popup" parent="DialogueManager/Popup/Area Info"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="FastForward" type="ColorRect" parent="DialogueManager/Popup"]
+anchor_left = 0.559
+anchor_top = 0.772
+anchor_right = 0.657
+anchor_bottom = 1.0
+margin_left = -0.416016
+margin_top = 0.0240097
+margin_right = 0.231995
+rect_pivot_offset = Vector2( -17, 40.0001 )
+color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Autoplay" type="Button" parent="DialogueManager/Popup"]
-anchor_left = 0.921
-anchor_top = 0.361
-anchor_right = 0.985
-anchor_bottom = 0.487
+[node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/FastForward"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 16 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Popup/FastForward/TextureButton"]
+anchor_left = 0.099
+anchor_top = 0.306
+anchor_right = 0.897
+anchor_bottom = 0.898
+margin_left = 0.00102997
+margin_top = -0.0159168
+margin_right = -0.0309677
+margin_bottom = 0.00907898
+custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
+text = "Fast Forward"
+scroll_active = false
+
+[node name="Next" type="ColorRect" parent="DialogueManager/Popup"]
+anchor_left = 0.796
+anchor_top = 0.772
+anchor_right = 0.895
+anchor_bottom = 1.0
 margin_left = -0.104065
-margin_top = -0.0379677
-margin_right = 0.359924
-margin_bottom = 0.0540314
-text = "autoplay"
-script = ExtResource( 15 )
+margin_top = 0.0240097
+margin_right = -0.480042
+rect_pivot_offset = Vector2( -17, 40.0001 )
+color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Next" type="Button" parent="DialogueManager/Popup"]
-anchor_left = 0.902
-anchor_top = 0.816
-anchor_right = 0.941
-anchor_bottom = 0.943
-margin_left = 0.351929
-margin_top = 0.0720062
-margin_right = 0.415955
-margin_bottom = 0.0059967
-text = "next"
+[node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/Next"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 16 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Popup/Next/TextureButton"]
+anchor_left = 0.188
+anchor_top = 0.306
+anchor_right = 0.986
+anchor_bottom = 0.926
+margin_left = 8.01203
+margin_top = -0.0159779
+margin_right = 7.98003
+margin_bottom = -0.998981
+custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
+text = "Next"
+scroll_active = false
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="DialogueManager/Popup/Next"]
+position = Vector2( 76, 18 )
+frames = SubResource( 1 )
+animation = "float"
+frame = 4
+playing = true
+
+[node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
+anchor_left = 0.678
+anchor_top = 0.766
+anchor_right = 0.776
+anchor_bottom = 0.994
+margin_left = -0.272034
+margin_top = -0.0279922
+margin_right = 0.375977
+margin_bottom = -0.052002
+rect_pivot_offset = Vector2( -17, 40.0001 )
+color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/AutoPlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 16 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Popup/AutoPlay/TextureButton"]
+anchor_left = 0.208
+anchor_top = 0.306
+anchor_right = 1.0
+anchor_bottom = 0.898
+margin_left = -0.00797081
+margin_top = -0.0160084
+margin_right = 0.566032
+margin_bottom = 0.00898743
+custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
+text = "Autoplay"
+scroll_active = false
+
+[node name="AreaInfo" type="ColorRect" parent="DialogueManager/Popup"]
+anchor_left = 0.214
+anchor_top = 0.772
+anchor_right = 0.312
+anchor_bottom = 1.0
+margin_left = -0.136017
+margin_top = 0.0240097
+margin_right = 0.511993
+rect_pivot_offset = Vector2( -17, 40.0001 )
+color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Popup" type="Popup" parent="DialogueManager/Popup/AreaInfo"]
+margin_left = 8.0
+margin_top = 4.99994
+margin_right = 48.0
+margin_bottom = 44.9999
+
+[node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/AreaInfo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 16 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Popup/AreaInfo/TextureButton"]
+anchor_left = 0.198
+anchor_top = 0.333
+anchor_right = 0.996
+anchor_bottom = 0.926
+margin_left = 0.0019989
+margin_top = 0.0119925
+margin_right = -0.0300064
+margin_bottom = 0.000988007
+custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
+text = "Area Info"
+scroll_active = false
+
+[node name="Skip Scene" type="ColorRect" parent="DialogueManager/Popup"]
+anchor_left = 0.441
+anchor_top = 0.772
+anchor_right = 0.54
+anchor_bottom = 1.0
+margin_left = 0.415985
+margin_top = 0.0240097
+margin_right = 0.039978
+rect_pivot_offset = Vector2( -17, 40.0001 )
+color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Popup" type="Popup" parent="DialogueManager/Popup/Skip Scene"]
+margin_left = 8.0
+margin_top = 4.99994
+margin_right = 48.0
+margin_bottom = 44.9999
+
+[node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/Skip Scene"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 16 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Popup/Skip Scene/TextureButton"]
+anchor_left = 0.158
+anchor_top = 0.333
+anchor_right = 0.956
+anchor_bottom = 0.926
+margin_left = 0.0419989
+margin_top = 0.0119925
+margin_right = 0.0100021
+margin_bottom = 0.000988007
+custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
+text = "Skip Scene"
+scroll_active = false
 
 [node name="CharacterSpawner" type="Control" parent="."]
 anchor_right = 1.0
@@ -713,6 +891,6 @@ expand = true
 [connection signal="button_up" from="Background/MenuManager/Scene Select/Volume Select7" to="Background/MenuManager" method="OnScene1"]
 [connection signal="button_up" from="Background/MenuManager/Chapter Select/Volume Select7" to="Background/MenuManager" method="OnChapter1"]
 [connection signal="button_up" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume1"]
-[connection signal="button_down" from="DialogueManager/Popup/Fast Forward" to="DialogueManager/Popup/Fast Forward" method="OnFastButton"]
-[connection signal="button_down" from="DialogueManager/Popup/Autoplay" to="DialogueManager/Popup/Autoplay" method="OnAutoButton"]
-[connection signal="button_down" from="DialogueManager/Popup/Next" to="." method="OnNextButton"]
+[connection signal="button_down" from="DialogueManager/Popup/FastForward/TextureButton" to="DialogueManager/Popup/FastForward" method="OnFastButton"]
+[connection signal="button_down" from="DialogueManager/Popup/Next/TextureButton" to="." method="OnNextButton"]
+[connection signal="button_down" from="DialogueManager/Popup/AutoPlay/TextureButton" to="DialogueManager/Popup/AutoPlay" method="OnAutoButton"]
