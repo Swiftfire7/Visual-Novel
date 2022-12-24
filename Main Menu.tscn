@@ -5,10 +5,10 @@
 [ext_resource path="res://Character Sprites/Sasheen_bust.png" type="Texture" id=3]
 [ext_resource path="res://CharacterManager.cs" type="Script" id=4]
 [ext_resource path="res://SceneManager.cs" type="Script" id=5]
-[ext_resource path="res://Assets/UI/next icon4.png" type="Texture" id=6]
-[ext_resource path="res://Assets/UI/next icon3.png" type="Texture" id=7]
-[ext_resource path="res://Assets/UI/next icon1.png" type="Texture" id=8]
-[ext_resource path="res://Assets/UI/next icon2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI/wax seal4.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/wax seal.png" type="Texture" id=7]
+[ext_resource path="res://Assets/UI/wax seal3.png" type="Texture" id=8]
+[ext_resource path="res://Assets/UI/wax seal2.png" type="Texture" id=9]
 [ext_resource path="res://DialogueReader.cs" type="Script" id=10]
 [ext_resource path="res://EventLogger.cs" type="Script" id=11]
 [ext_resource path="res://BiographyManager.cs" type="Script" id=12]
@@ -20,10 +20,10 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "float",
-"speed": 4.6
+"speed": 5.5
 } ]
 
 [node name="SceneManager" type="Control"]
@@ -534,17 +534,18 @@ mouse_filter = 2
 
 [node name="Popup" type="Popup" parent="DialogueManager"]
 visible = true
-anchor_top = 0.737
+anchor_top = 0.662
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.200043
 script = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="DialogueManager/Popup"]
+anchor_top = -0.171
 anchor_right = 1.001
 anchor_bottom = 0.994
 margin_left = -1.0
-margin_top = -27.0
+margin_top = 0.0180111
 margin_right = -1.02405
 margin_bottom = -0.052063
 texture = ExtResource( 17 )
@@ -581,13 +582,12 @@ text = "test name"
 
 [node name="Biography" type="ColorRect" parent="DialogueManager/Popup"]
 anchor_left = 0.104
-anchor_top = 0.766
+anchor_top = 0.772
 anchor_right = 0.202
 anchor_bottom = 1.0
 margin_left = -0.496002
-margin_top = -0.0279922
+margin_top = 0.0240097
 margin_right = 0.151993
-margin_bottom = -1.0
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
 script = ExtResource( 12 )
@@ -616,6 +616,7 @@ margin_left = 0.0219994
 margin_top = 0.0119925
 margin_right = -0.0100021
 margin_bottom = 0.000988007
+mouse_filter = 1
 custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
 text = "Biography"
 scroll_active = false
@@ -631,9 +632,6 @@ margin_right = -0.176025
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
 script = ExtResource( 11 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Popup" type="Popup" parent="DialogueManager/Popup/Event"]
 margin_left = 8.0
@@ -656,6 +654,7 @@ margin_left = 0.0120296
 margin_top = 0.984022
 margin_right = -0.0199738
 margin_bottom = 0.00101852
+mouse_filter = 1
 custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
 text = "Event Log"
 scroll_active = false
@@ -671,9 +670,6 @@ margin_right = 0.231995
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/FastForward"]
 anchor_right = 1.0
@@ -690,6 +686,7 @@ margin_left = 0.00102997
 margin_top = -0.0159168
 margin_right = -0.0309677
 margin_bottom = 0.00907898
+mouse_filter = 1
 custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
 text = "Fast Forward"
 scroll_active = false
@@ -704,9 +701,6 @@ margin_top = 0.0240097
 margin_right = -0.480042
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/Next"]
 anchor_right = 1.0
@@ -723,32 +717,31 @@ margin_left = 8.01203
 margin_top = -0.0159779
 margin_right = 7.98003
 margin_bottom = -0.998981
+mouse_filter = 1
 custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
 text = "Next"
 scroll_active = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="DialogueManager/Popup/Next"]
-position = Vector2( 76, 18 )
+position = Vector2( 75, 22.2603 )
+scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 4
+frame = 2
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
 anchor_left = 0.678
-anchor_top = 0.766
+anchor_top = 0.772
 anchor_right = 0.776
 anchor_bottom = 0.994
 margin_left = -0.272034
-margin_top = -0.0279922
+margin_top = 0.0239487
 margin_right = 0.375977
-margin_bottom = -0.052002
+margin_bottom = 0.947937
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
 script = ExtResource( 15 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/AutoPlay"]
 anchor_right = 1.0
@@ -765,6 +758,7 @@ margin_left = -0.00797081
 margin_top = -0.0160084
 margin_right = 0.566032
 margin_bottom = 0.00898743
+mouse_filter = 1
 custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
 text = "Autoplay"
 scroll_active = false
@@ -780,9 +774,6 @@ margin_right = 0.511993
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
 script = ExtResource( 12 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Popup" type="Popup" parent="DialogueManager/Popup/AreaInfo"]
 margin_left = 8.0
@@ -805,6 +796,7 @@ margin_left = 0.0019989
 margin_top = 0.0119925
 margin_right = -0.0300064
 margin_bottom = 0.000988007
+mouse_filter = 1
 custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
 text = "Area Info"
 scroll_active = false
@@ -819,9 +811,6 @@ margin_top = 0.0240097
 margin_right = 0.039978
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Popup" type="Popup" parent="DialogueManager/Popup/Skip Scene"]
 margin_left = 8.0
@@ -844,6 +833,7 @@ margin_left = 0.0419989
 margin_top = 0.0119925
 margin_right = 0.0100021
 margin_bottom = 0.000988007
+mouse_filter = 1
 custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
 text = "Skip Scene"
 scroll_active = false

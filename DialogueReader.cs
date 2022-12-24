@@ -203,7 +203,7 @@ public class DialogueReader : Popup
             NextPhrase();
         }
         //or if fast forwarding
-        if (fastManager.FastPressed)
+        else if (fastManager.FastPressed)
         {
             NextPhrase();
         }
