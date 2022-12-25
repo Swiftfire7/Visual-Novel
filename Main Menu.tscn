@@ -74,6 +74,7 @@ valign = 1
 autowrap = true
 
 [node name="Scene Select" type="ColorRect" parent="Background/MenuManager"]
+visible = false
 anchor_left = 0.108
 anchor_top = 0.035
 anchor_right = 0.245
@@ -371,7 +372,6 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select" type="ColorRect" parent="Background/MenuManager"]
-visible = false
 anchor_left = 0.108
 anchor_top = 0.035
 anchor_right = 0.245
@@ -752,6 +752,7 @@ position = Vector2( 75, 22.2603 )
 scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
+frame = 5
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
