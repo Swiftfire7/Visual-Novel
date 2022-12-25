@@ -3,7 +3,8 @@ using System;
 
 public class MenuManager : Control
 {
-    private string backgroundPath = "res://Assets/Books/Book1/";
+    private string backgroundPath = "res://Assets/Books/";
+    private string bookPath = "";
     private string volumePath = "";
     private string chapterPath = "";
     string selectedScenePath = "";
@@ -45,13 +46,21 @@ public class MenuManager : Control
         Button instructions = GetNode<Button>("instructions");
         instructions.Show();
     }
+    public void OnBook(string PressedButton)
+    {
+        colorRect = GetNode<ColorRect>("Book Select");
+        colorRect.Hide();
+        colorRect = GetNode<ColorRect>("Volume Select");
+        colorRect.Show();
+        bookPath = backgroundPath + PressedButton + "/";
+    }
     public void OnVolume(string PressedButton)
     {
         colorRect = GetNode<ColorRect>("Volume Select");
         colorRect.Hide();
         colorRect = GetNode<ColorRect>("Chapter Select");
         colorRect.Show();
-        volumePath = backgroundPath + PressedButton + "/";
+        volumePath = bookPath + PressedButton + "/";
     }
     public void OnChapter(string PressedButton)
     {
@@ -88,7 +97,10 @@ public class MenuManager : Control
     }
     public void OnBookMenu()
     {
-
+        colorRect = GetNode<ColorRect>("Volume Select");
+        colorRect.Hide();
+        colorRect = GetNode<ColorRect>("Book Select");
+        colorRect.Show();
     }
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)

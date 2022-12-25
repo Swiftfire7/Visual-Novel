@@ -38,8 +38,6 @@ script = ExtResource( 5 )
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.0
-margin_right = 2.0
 texture = ExtResource( 1 )
 expand = true
 script = ExtResource( 13 )
@@ -372,6 +370,7 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select" type="ColorRect" parent="Background/MenuManager"]
+visible = false
 anchor_left = 0.108
 anchor_top = 0.035
 anchor_right = 0.245
@@ -548,6 +547,209 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Volume 6: Dilation (N/A)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Book Select" type="ColorRect" parent="Background/MenuManager"]
+anchor_left = 0.108
+anchor_top = 0.035
+anchor_right = 0.245
+anchor_bottom = 0.09
+margin_left = 0.407997
+margin_right = -0.880005
+margin_bottom = -3.8147e-06
+mouse_filter = 1
+color = Color( 0.862745, 0.121569, 0.121569, 1 )
+
+[node name="Label" type="Label" parent="Background/MenuManager/Book Select"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 0.984314, 0, 1 )
+text = "Book Selection: Please select one"
+align = 1
+autowrap = true
+
+[node name="MenuReturn" type="Button" parent="Background/MenuManager/Book Select/Label"]
+anchor_right = 0.993
+anchor_bottom = 1.061
+margin_right = -0.0270081
+margin_bottom = -0.0130043
+flat = true
+expand_icon = true
+
+[node name="Volume 0" type="Button" parent="Background/MenuManager/Book Select"]
+anchor_left = 0.007
+anchor_top = 1.515
+anchor_right = 1.0
+anchor_bottom = 2.394
+margin_left = 0.027
+margin_top = 0.00499725
+margin_right = 2.0
+margin_bottom = -0.0019989
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Book Select/Volume 0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Book 0: Compendium"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 1" type="Button" parent="Background/MenuManager/Book Select"]
+anchor_left = 0.058
+anchor_top = 2.758
+anchor_right = 1.065
+anchor_bottom = 3.788
+margin_left = -0.0620003
+margin_top = -0.0140152
+margin_right = -0.0350037
+margin_bottom = -0.00401306
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Book Select/Volume 1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Book 1: The Sunken City of Shetrayah"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 2" type="Button" parent="Background/MenuManager/Book Select"]
+anchor_left = 0.144
+anchor_top = 4.242
+anchor_right = 1.151
+anchor_bottom = 5.121
+margin_left = -0.0160007
+margin_top = 0.0139923
+margin_right = 0.0110016
+margin_bottom = 2.00699
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Book Select/Volume 2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Book 2: Scourge of the Seas"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 3" type="Button" parent="Background/MenuManager/Book Select"]
+anchor_left = 0.237
+anchor_top = 5.485
+anchor_right = 1.245
+anchor_bottom = 6.364
+margin_left = 0.0569992
+margin_top = -0.00500488
+margin_right = -0.0550079
+margin_bottom = -0.0120239
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Book Select/Volume 3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Book 3: Reviving the River Valley"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 4" type="Button" parent="Background/MenuManager/Book Select"]
+anchor_left = 0.281
+anchor_top = 6.667
+anchor_right = 1.288
+anchor_bottom = 7.545
+margin_left = -0.0590019
+margin_top = -0.0110168
+margin_right = -0.0320282
+margin_bottom = 0.0149841
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Book Select/Volume 4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Book 4: The Brewing Tempest"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 5" type="Button" parent="Background/MenuManager/Book Select"]
+anchor_left = 0.266
+anchor_top = 7.818
+anchor_right = 1.273
+anchor_bottom = 8.697
+margin_left = 0.026001
+margin_top = 0.00595093
+margin_right = 0.0529938
+margin_bottom = -0.0010376
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Book Select/Volume 5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Book 5: Rashke's Will"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 6" type="Button" parent="Background/MenuManager/Book Select"]
+anchor_left = 0.216
+anchor_top = 8.879
+anchor_right = 1.223
+anchor_bottom = 9.758
+margin_left = -0.0240002
+margin_top = -0.00698853
+margin_right = 0.00299072
+margin_bottom = -0.0139771
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Book Select/Volume 6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Book 6: Floridian"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Volume 7" type="Button" parent="Background/MenuManager/Book Select"]
+anchor_left = 0.173
+anchor_top = 9.97
+anchor_right = 1.18
+anchor_bottom = 10.848
+margin_left = -0.0470009
+margin_top = -0.0100403
+margin_right = -0.0200043
+margin_bottom = 0.0159607
+rect_pivot_offset = Vector2( -19, 106 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/MenuManager/Book Select/Volume 7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Book 7: Land of Lich"
 align = 1
 valign = 1
 autowrap = true
@@ -752,7 +954,7 @@ position = Vector2( 75, 22.2603 )
 scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 5
+frame = 1
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
@@ -914,6 +1116,7 @@ script = ExtResource( 18 )
 [connection signal="button_down" from="Background/MenuManager/Chapter Select/Chapter1" to="Background/MenuManager" method="OnChapter" binds= [ "Chapter1" ]]
 [connection signal="button_down" from="Background/MenuManager/Volume Select/Label/Button" to="Background/MenuManager" method="OnBookMenu"]
 [connection signal="button_down" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume" binds= [ "Volume1" ]]
+[connection signal="button_down" from="Background/MenuManager/Book Select/Volume 1" to="Background/MenuManager" method="OnBook" binds= [ "Book1" ]]
 [connection signal="button_down" from="DialogueManager/Popup/FastForward/TextureButton" to="DialogueManager/Popup/FastForward" method="OnFastButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Next/TextureButton" to="." method="OnNextButton"]
 [connection signal="button_down" from="DialogueManager/Popup/AutoPlay/TextureButton" to="DialogueManager/Popup/AutoPlay" method="OnAutoButton"]
