@@ -10,7 +10,7 @@ public class MenuManager : Control
     public string SelectedScenePath = "";
     string currentPath = "";
     ColorRect colorRect;
-    TextureRect background;
+    public TextureRect background;
     SceneManager sceneManager;
 
     // Called when the node enters the scene tree for the first time.
@@ -19,6 +19,7 @@ public class MenuManager : Control
         sceneManager = GetNode<SceneManager>("../../");
         background = GetNode<TextureRect>("../");
     }
+    //when an item is selected, show the next menu
     public void OnBook(string PressedButton)
     {
         colorRect = GetNode<ColorRect>("Book Select");
@@ -54,6 +55,7 @@ public class MenuManager : Control
         Button instructions = GetNode<Button>("instructions");
         instructions.Show();
     }
+    //when the menu button is clicked, step back through the menu
     public void OnVolumeMenu()
     {
         colorRect = GetNode<ColorRect>("Chapter Select");

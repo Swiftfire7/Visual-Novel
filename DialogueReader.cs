@@ -8,7 +8,7 @@ public class DialogueReader : Popup
 {
     public string dialoguePath = "Assets/Scenes/Introduction/Intro1/dialogue/dialogue.json";
     public float textSpeed = 0.03f;
-    int phraseNum = 0;
+    public int phraseNum = 0;
     public int previousIndex = 0;
     public bool finished = false;
     public bool dialogueEnded = false;
