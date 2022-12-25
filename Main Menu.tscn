@@ -122,14 +122,14 @@ valign = 1
 autowrap = true
 
 [node name="Scene1" type="Button" parent="Background/MenuManager/Scene Select"]
-anchor_left = 0.101
-anchor_top = 3.03
-anchor_right = 1.108
-anchor_bottom = 3.909
-margin_left = -0.0390005
-margin_top = 0.00999451
-margin_right = -0.0120087
-margin_bottom = 0.00299072
+anchor_left = 0.151
+anchor_top = 3.576
+anchor_right = 1.158
+anchor_bottom = 4.455
+margin_left = 0.0109997
+margin_top = -0.00800323
+margin_right = 0.0379791
+margin_bottom = -0.0150146
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -144,14 +144,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select8" type="Button" parent="Background/MenuManager/Scene Select"]
-anchor_left = 0.201
-anchor_top = 4.333
-anchor_right = 1.209
-anchor_bottom = 5.212
-margin_left = 0.0609989
-margin_top = 0.0109863
-margin_right = -0.0510101
-margin_bottom = 0.00398254
+anchor_left = 0.266
+anchor_top = 5.515
+anchor_right = 1.273
+anchor_bottom = 6.394
+margin_left = 0.026001
+margin_top = 0.00498962
+margin_right = 0.0529785
+margin_bottom = -0.00202942
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -166,14 +166,13 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select9" type="Button" parent="Background/MenuManager/Scene Select"]
-anchor_left = 0.266
-anchor_top = 5.727
-anchor_right = 1.273
-anchor_bottom = 7.242
-margin_left = 0.026001
-margin_top = 0.00898743
-margin_right = 0.0529938
-margin_bottom = 0.0139771
+anchor_left = 0.201
+anchor_top = 7.485
+anchor_right = 1.209
+anchor_bottom = 9.0
+margin_left = 0.0609989
+margin_top = -0.00500488
+margin_right = -0.0510101
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -188,14 +187,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select10" type="Button" parent="Background/MenuManager/Scene Select"]
-anchor_left = 0.302
-anchor_top = 7.455
-anchor_right = 1.309
-anchor_bottom = 8.333
-margin_left = 0.0219994
-margin_top = -0.0150146
-margin_right = 0.048996
-margin_bottom = 0.0109863
+anchor_left = 0.137
+anchor_top = 10.121
+anchor_right = 1.144
+anchor_bottom = 11.0
+margin_left = -0.043005
+margin_top = 0.00698853
+margin_right = -0.0160065
+margin_bottom = -3.05176e-05
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -260,14 +259,14 @@ valign = 1
 autowrap = true
 
 [node name="Chapter1" type="Button" parent="Background/MenuManager/Chapter Select"]
-anchor_left = 0.101
-anchor_top = 3.03
-anchor_right = 1.108
-anchor_bottom = 3.909
-margin_left = -0.0390005
-margin_top = 0.00999451
-margin_right = -0.0120087
-margin_bottom = 0.00299072
+anchor_left = 0.144
+anchor_top = 3.515
+anchor_right = 1.151
+anchor_bottom = 4.394
+margin_left = -0.0160007
+margin_top = 0.00500488
+margin_right = 0.0110016
+margin_bottom = -0.0019989
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -282,14 +281,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select8" type="Button" parent="Background/MenuManager/Chapter Select"]
-anchor_left = 0.201
-anchor_top = 4.333
-anchor_right = 1.209
-anchor_bottom = 5.212
-margin_left = 0.0609989
-margin_top = 0.0109863
-margin_right = -0.0510101
-margin_bottom = 0.00398254
+anchor_left = 0.281
+anchor_top = 5.364
+anchor_right = 1.288
+anchor_bottom = 6.242
+margin_left = -0.0590019
+margin_top = -0.0120087
+margin_right = -0.0320282
+margin_bottom = 0.0139771
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -304,14 +303,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select9" type="Button" parent="Background/MenuManager/Chapter Select"]
-anchor_left = 0.266
-anchor_top = 5.727
-anchor_right = 1.273
-anchor_bottom = 6.606
-margin_left = 0.026001
-margin_top = 0.00898743
-margin_right = 0.0529938
-margin_bottom = 18.002
+anchor_left = 0.309
+anchor_top = 7.364
+anchor_right = 1.317
+anchor_bottom = 8.364
+margin_left = 0.048996
+margin_top = -0.0120087
+margin_right = -0.0630035
+margin_bottom = -0.0120239
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -326,14 +325,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select10" type="Button" parent="Background/MenuManager/Chapter Select"]
-anchor_left = 0.309
-anchor_top = 7.333
-anchor_right = 1.331
-anchor_bottom = 8.242
-margin_left = 0.048996
-margin_top = 0.0109863
-margin_right = -0.00901794
-margin_bottom = 0.0139771
+anchor_left = 0.18
+anchor_top = 9.394
+anchor_right = 1.201
+anchor_bottom = 10.303
+margin_left = -0.0200081
+margin_top = -0.00201416
+margin_right = 0.0609894
+margin_bottom = 0.000946045
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -348,14 +347,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select11" type="Button" parent="Background/MenuManager/Chapter Select"]
-anchor_left = 0.201
-anchor_top = 8.485
-anchor_right = 1.245
-anchor_bottom = 9.424
-margin_left = 0.0609989
-margin_top = -0.00500488
-margin_right = -0.0550079
-margin_bottom = 0.00796509
+anchor_left = 0.094
+anchor_top = 11.485
+anchor_right = 1.137
+anchor_bottom = 12.424
+margin_left = -0.0660009
+margin_top = -0.0050354
+margin_right = -0.0430145
+margin_bottom = 0.00793457
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -398,14 +397,14 @@ flat = true
 expand_icon = true
 
 [node name="Volume 0" type="Button" parent="Background/MenuManager/Volume Select"]
-anchor_left = 0.007
-anchor_top = 1.515
-anchor_right = 1.0
-anchor_bottom = 2.394
-margin_left = 0.027
-margin_top = 0.00499725
-margin_right = 2.0
-margin_bottom = -0.0019989
+anchor_left = 0.043
+anchor_top = 1.697
+anchor_right = 1.05
+anchor_bottom = 2.576
+margin_left = 0.0229998
+margin_top = -0.000999451
+margin_right = 0.0499878
+margin_bottom = -0.00801086
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -420,14 +419,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 1" type="Button" parent="Background/MenuManager/Volume Select"]
-anchor_left = 0.058
-anchor_top = 2.758
-anchor_right = 1.065
-anchor_bottom = 3.636
-margin_left = -0.0620003
-margin_top = -0.0140076
-margin_right = -0.0350037
-margin_bottom = 5.01199
+anchor_left = 0.137
+anchor_top = 3.364
+anchor_right = 1.144
+anchor_bottom = 4.394
+margin_left = -0.0430012
+margin_top = -0.012001
+margin_right = -0.0160065
+margin_bottom = -0.0019989
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -442,14 +441,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 2" type="Button" parent="Background/MenuManager/Volume Select"]
-anchor_left = 0.144
-anchor_top = 4.242
-anchor_right = 1.151
-anchor_bottom = 5.121
-margin_left = -0.0160007
-margin_top = 0.0139923
-margin_right = 0.0110016
-margin_bottom = 2.00699
+anchor_left = 0.281
+anchor_top = 5.182
+anchor_right = 1.288
+anchor_bottom = 6.121
+margin_left = -0.0590019
+margin_top = -0.00601196
+margin_right = -0.0320129
+margin_bottom = 0.00697327
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -464,14 +463,13 @@ valign = 1
 autowrap = true
 
 [node name="Volume 3" type="Button" parent="Background/MenuManager/Volume Select"]
-anchor_left = 0.259
-anchor_top = 5.576
-anchor_right = 1.266
-anchor_bottom = 6.455
-margin_left = -0.000999451
-margin_top = -0.00801086
-margin_right = 0.026001
-margin_bottom = -0.0150146
+anchor_left = 0.309
+anchor_top = 7.121
+anchor_right = 1.317
+anchor_bottom = 8.0
+margin_left = 0.048996
+margin_top = 0.00698853
+margin_right = -0.0630035
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -486,14 +484,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 4" type="Button" parent="Background/MenuManager/Volume Select"]
-anchor_left = 0.281
-anchor_top = 6.879
-anchor_right = 1.288
-anchor_bottom = 7.758
-margin_left = -0.0590019
-margin_top = -0.00700378
-margin_right = -0.0320129
-margin_bottom = -0.0140076
+anchor_left = 0.216
+anchor_top = 9.061
+anchor_right = 1.223
+anchor_bottom = 9.939
+margin_left = -0.0240002
+margin_top = -0.013031
+margin_right = 0.00297546
+margin_bottom = 0.0130005
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -508,14 +506,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 5" type="Button" parent="Background/MenuManager/Volume Select"]
-anchor_left = 0.259
-anchor_top = 8.212
-anchor_right = 1.266
-anchor_bottom = 9.091
-margin_left = -0.000999451
-margin_top = 0.00396729
-margin_right = 0.026001
-margin_bottom = -0.00302124
+anchor_left = 0.144
+anchor_top = 11.03
+anchor_right = 1.151
+anchor_bottom = 11.909
+margin_left = -0.0160007
+margin_top = 0.00994873
+margin_right = 0.0110016
+margin_bottom = 0.00296021
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -530,14 +528,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 6" type="Button" parent="Background/MenuManager/Volume Select"]
-anchor_left = 0.194
-anchor_top = 9.606
-anchor_right = 1.288
-anchor_bottom = 10.485
-margin_left = 0.0339985
-margin_top = 0.00198364
-margin_right = -12.032
-margin_bottom = -0.00500488
+anchor_left = 0.187
+anchor_top = 12.879
+anchor_right = 1.194
+anchor_bottom = 13.758
+margin_left = 0.00699997
+margin_top = -0.00698853
+margin_right = 0.0339966
+margin_bottom = -0.0139771
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -601,14 +599,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 1" type="Button" parent="Background/MenuManager/Book Select"]
-anchor_left = 0.058
-anchor_top = 2.758
-anchor_right = 1.065
-anchor_bottom = 3.788
-margin_left = -0.0620003
-margin_top = -0.0140152
-margin_right = -0.0350037
-margin_bottom = -0.00401306
+anchor_left = 0.108
+anchor_top = 3.121
+anchor_right = 1.115
+anchor_bottom = 4.152
+margin_left = -0.0120001
+margin_top = 0.00700378
+margin_right = 0.0149994
+margin_bottom = -0.0160217
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -623,14 +621,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 2" type="Button" parent="Background/MenuManager/Book Select"]
-anchor_left = 0.144
-anchor_top = 4.242
-anchor_right = 1.151
-anchor_bottom = 5.121
-margin_left = -0.0160007
-margin_top = 0.0139923
-margin_right = 0.0110016
-margin_bottom = 2.00699
+anchor_left = 0.23
+anchor_top = 4.818
+anchor_right = 1.237
+anchor_bottom = 5.758
+margin_left = 0.0299988
+margin_top = 0.0059967
+margin_right = 0.0569916
+margin_bottom = -0.0140228
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -645,14 +643,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 3" type="Button" parent="Background/MenuManager/Book Select"]
-anchor_left = 0.237
-anchor_top = 5.485
-anchor_right = 1.245
-anchor_bottom = 6.364
-margin_left = 0.0569992
-margin_top = -0.00500488
-margin_right = -0.0550079
-margin_bottom = -0.0120239
+anchor_left = 0.317
+anchor_top = 6.697
+anchor_right = 1.324
+anchor_bottom = 7.576
+margin_left = -0.0629997
+margin_top = -0.00102234
+margin_right = -0.0360107
+margin_bottom = -0.00802612
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -667,14 +665,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 4" type="Button" parent="Background/MenuManager/Book Select"]
-anchor_left = 0.281
-anchor_top = 6.667
-anchor_right = 1.288
-anchor_bottom = 7.545
-margin_left = -0.0590019
-margin_top = -0.0110168
-margin_right = -0.0320282
-margin_bottom = 0.0149841
+anchor_left = 0.223
+anchor_top = 8.697
+anchor_right = 1.23
+anchor_bottom = 9.576
+margin_left = 0.00300026
+margin_top = -0.00100708
+margin_right = 0.0299835
+margin_bottom = -0.00799561
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -689,14 +687,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 5" type="Button" parent="Background/MenuManager/Book Select"]
-anchor_left = 0.266
-anchor_top = 7.818
-anchor_right = 1.273
-anchor_bottom = 8.697
-margin_left = 0.026001
-margin_top = 0.00595093
-margin_right = 0.0529938
-margin_bottom = -0.0010376
+anchor_left = 0.137
+anchor_top = 10.545
+anchor_right = 1.144
+anchor_bottom = 11.424
+margin_left = -0.0430012
+margin_top = 0.0150146
+margin_right = -0.0160065
+margin_bottom = 0.00799561
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -711,14 +709,14 @@ valign = 1
 autowrap = true
 
 [node name="Volume 6" type="Button" parent="Background/MenuManager/Book Select"]
-anchor_left = 0.216
-anchor_top = 8.879
-anchor_right = 1.223
-anchor_bottom = 9.758
-margin_left = -0.0240002
-margin_top = -0.00698853
-margin_right = 0.00299072
-margin_bottom = -0.0139771
+anchor_left = 0.108
+anchor_top = 12.273
+anchor_right = 1.115
+anchor_bottom = 13.152
+margin_left = -0.0120001
+margin_top = -0.00906372
+margin_right = 0.0149994
+margin_bottom = -0.0160522
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -733,14 +731,13 @@ valign = 1
 autowrap = true
 
 [node name="Volume 7" type="Button" parent="Background/MenuManager/Book Select"]
-anchor_left = 0.173
-anchor_top = 9.97
-anchor_right = 1.18
-anchor_bottom = 10.848
-margin_left = -0.0470009
-margin_top = -0.0100403
-margin_right = -0.0200043
-margin_bottom = 0.0159607
+anchor_left = 0.165
+anchor_top = 14.0
+anchor_right = 1.173
+anchor_bottom = 14.879
+margin_left = 0.0649986
+margin_right = -0.0470123
+margin_bottom = -0.00701904
 rect_pivot_offset = Vector2( -19, 106 )
 __meta__ = {
 "_edit_group_": true
@@ -755,6 +752,7 @@ valign = 1
 autowrap = true
 
 [node name="DialogueManager" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -1066,6 +1064,7 @@ text = "Skip Scene"
 scroll_active = false
 
 [node name="CharacterSpawner" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
