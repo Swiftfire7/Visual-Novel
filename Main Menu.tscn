@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/backgrounds/diffused menu scroll.png" type="Texture" id=1]
 [ext_resource path="res://MenuManager.cs" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://AutoplayManager.cs" type="Script" id=15]
 [ext_resource path="res://Assets/UI/leaf emroidery.png" type="Texture" id=16]
 [ext_resource path="res://Assets/UI/scroll2.png" type="Texture" id=17]
+[ext_resource path="res://SoundManager.cs" type="Script" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -114,7 +115,7 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Volume Select7" type="Button" parent="Background/MenuManager/Scene Select"]
+[node name="Scene1" type="Button" parent="Background/MenuManager/Scene Select"]
 anchor_left = 0.101
 anchor_top = 3.03
 anchor_right = 1.108
@@ -128,7 +129,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Background/MenuManager/Scene Select/Volume Select7"]
+[node name="Label" type="Label" parent="Background/MenuManager/Scene Select/Scene1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Scene 1: The Sandy Sphinx"
@@ -244,7 +245,7 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Volume Select7" type="Button" parent="Background/MenuManager/Chapter Select"]
+[node name="Chapter1" type="Button" parent="Background/MenuManager/Chapter Select"]
 anchor_left = 0.101
 anchor_top = 3.03
 anchor_right = 1.108
@@ -258,7 +259,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Background/MenuManager/Chapter Select/Volume Select7"]
+[node name="Label" type="Label" parent="Background/MenuManager/Chapter Select/Chapter1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Chapter 1: Surveying the sandtown"
@@ -372,6 +373,14 @@ custom_colors/font_color = Color( 1, 0.984314, 0, 1 )
 text = "Volume Selection: Please select one"
 align = 1
 autowrap = true
+
+[node name="Button" type="Button" parent="Background/MenuManager/Volume Select/Label"]
+anchor_right = 0.993
+anchor_bottom = 1.061
+margin_right = -0.0270081
+margin_bottom = -0.0130043
+flat = true
+expand_icon = true
 
 [node name="Volume 0" type="Button" parent="Background/MenuManager/Volume Select"]
 anchor_left = 0.007
@@ -727,7 +736,7 @@ position = Vector2( 75, 22.2603 )
 scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 2
+frame = 5
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
@@ -878,9 +887,14 @@ margin_bottom = 0.199982
 texture = ExtResource( 3 )
 expand = true
 
-[connection signal="button_up" from="Background/MenuManager/Scene Select/Volume Select7" to="Background/MenuManager" method="OnScene1"]
-[connection signal="button_up" from="Background/MenuManager/Chapter Select/Volume Select7" to="Background/MenuManager" method="OnChapter1"]
-[connection signal="button_up" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume1"]
+[node name="SoundManager" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 18 )
+
+[connection signal="button_down" from="Background/MenuManager/Scene Select/Scene1" to="Background/MenuManager" method="OnScene" binds= [ "Scene1" ]]
+[connection signal="button_down" from="Background/MenuManager/Chapter Select/Chapter1" to="Background/MenuManager" method="OnChapter" binds= [ "Chapter1" ]]
+[connection signal="button_down" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume" binds= [ "Volume1" ]]
 [connection signal="button_down" from="DialogueManager/Popup/FastForward/TextureButton" to="DialogueManager/Popup/FastForward" method="OnFastButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Next/TextureButton" to="." method="OnNextButton"]
 [connection signal="button_down" from="DialogueManager/Popup/AutoPlay/TextureButton" to="DialogueManager/Popup/AutoPlay" method="OnAutoButton"]

@@ -3,10 +3,11 @@ using System;
 
 public class MenuManager : Control
 {
-    private string backgroundPath = "res://Assets/";
+    private string backgroundPath = "res://Assets/Books/Book1/";
     private string volumePath = "";
     private string chapterPath = "";
     string selectedScenePath = "";
+    string currentPath = "";
     ColorRect colorRect;
     TextureRect background;
     SceneManager sceneManager;
@@ -43,6 +44,47 @@ public class MenuManager : Control
         background.Texture = img;
         Button instructions = GetNode<Button>("instructions");
         instructions.Show();
+    }
+    public void OnVolume(string PressedButton)
+    {
+        colorRect = GetNode<ColorRect>("Volume Select");
+        colorRect.Hide();
+        colorRect = GetNode<ColorRect>("Chapter Select");
+        colorRect.Show();
+        volumePath = backgroundPath + PressedButton + "/";
+    }
+    public void OnChapter(string PressedButton)
+    {
+        colorRect = GetNode<ColorRect>("Chapter Select");
+        colorRect.Hide();
+        colorRect = GetNode<ColorRect>("Scene Select");
+        colorRect.Show();
+        chapterPath = volumePath + PressedButton + "/";
+    }
+    public void OnScene(string PressedButton)
+    {
+        sceneManager.MenuIsUp = false;
+        colorRect = GetNode<ColorRect>("Scene Select");
+        colorRect.Hide();
+        selectedScenePath = chapterPath + PressedButton;
+        var img = (Texture)GD.Load(selectedScenePath + "/scenery/Sandtown.png");
+        background.Texture = img;
+        Button instructions = GetNode<Button>("instructions");
+        instructions.Show();
+    }
+    public void OnVolumeMenu()
+    {
+        colorRect = GetNode<ColorRect>("Chapter Select");
+        colorRect.Hide();
+        colorRect = GetNode<ColorRect>("Volume Select");
+        colorRect.Show();
+    }
+    public void OnChapterMenu()
+    {
+        colorRect = GetNode<ColorRect>("Scene Select");
+        colorRect.Hide();
+        colorRect = GetNode<ColorRect>("Chapter Select");
+        colorRect.Show();
     }
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)
