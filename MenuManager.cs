@@ -7,7 +7,7 @@ public class MenuManager : Control
     private string bookPath = "";
     private string volumePath = "";
     private string chapterPath = "";
-    string selectedScenePath = "";
+    public string SelectedScenePath = "";
     string currentPath = "";
     ColorRect colorRect;
     TextureRect background;
@@ -18,33 +18,6 @@ public class MenuManager : Control
     {
         sceneManager = GetNode<SceneManager>("../../");
         background = GetNode<TextureRect>("../");
-    }
-    public void OnVolume1()
-    {
-        colorRect = GetNode<ColorRect>("Volume Select");
-        colorRect.Hide();
-        colorRect = GetNode<ColorRect>("Chapter Select");
-        colorRect.Show();
-        volumePath = backgroundPath + "Scenes/";
-    }
-    public void OnChapter1()
-    {
-        colorRect = GetNode<ColorRect>("Chapter Select");
-        colorRect.Hide();
-        colorRect = GetNode<ColorRect>("Scene Select");
-        colorRect.Show();
-        chapterPath = "Introduction/";
-    }
-    public void OnScene1()
-    {
-        sceneManager.MenuIsUp = false;
-        colorRect = GetNode<ColorRect>("Scene Select");
-        colorRect.Hide();
-        selectedScenePath = volumePath + chapterPath + ("intro1/");
-        var img = (Texture)GD.Load(selectedScenePath + "scenery/Sandtown.png");
-        background.Texture = img;
-        Button instructions = GetNode<Button>("instructions");
-        instructions.Show();
     }
     public void OnBook(string PressedButton)
     {
@@ -75,8 +48,8 @@ public class MenuManager : Control
         sceneManager.MenuIsUp = false;
         colorRect = GetNode<ColorRect>("Scene Select");
         colorRect.Hide();
-        selectedScenePath = chapterPath + PressedButton;
-        var img = (Texture)GD.Load(selectedScenePath + "/scenery/Sandtown.png");
+        SelectedScenePath = chapterPath + PressedButton;
+        var img = (Texture)GD.Load(SelectedScenePath + "/scenery/Sandtown.png");
         background.Texture = img;
         Button instructions = GetNode<Button>("instructions");
         instructions.Show();
