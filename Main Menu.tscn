@@ -74,7 +74,6 @@ valign = 1
 autowrap = true
 
 [node name="Scene Select" type="ColorRect" parent="Background/MenuManager"]
-visible = false
 anchor_left = 0.108
 anchor_top = 0.035
 anchor_right = 0.245
@@ -92,6 +91,14 @@ custom_colors/font_color = Color( 1, 0.984314, 0, 1 )
 text = "Scene Selection: Please select one"
 align = 1
 autowrap = true
+
+[node name="Button" type="Button" parent="Background/MenuManager/Scene Select/Label"]
+anchor_right = 0.993
+anchor_bottom = 1.061
+margin_right = -0.0270081
+margin_bottom = -0.0130043
+flat = true
+expand_icon = true
 
 [node name="Volume Select6" type="Button" parent="Background/MenuManager/Scene Select"]
 anchor_left = 0.022
@@ -222,6 +229,14 @@ custom_colors/font_color = Color( 1, 0.984314, 0, 1 )
 text = "Chapter Selection: Please select one"
 align = 1
 autowrap = true
+
+[node name="Button" type="Button" parent="Background/MenuManager/Chapter Select/Label"]
+anchor_right = 0.993
+anchor_bottom = 1.061
+margin_right = -0.0270081
+margin_bottom = -0.0130043
+flat = true
+expand_icon = true
 
 [node name="Volume Select6" type="Button" parent="Background/MenuManager/Chapter Select"]
 anchor_left = 0.022
@@ -356,6 +371,7 @@ valign = 1
 autowrap = true
 
 [node name="Volume Select" type="ColorRect" parent="Background/MenuManager"]
+visible = false
 anchor_left = 0.108
 anchor_top = 0.035
 anchor_right = 0.245
@@ -736,7 +752,6 @@ position = Vector2( 75, 22.2603 )
 scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 5
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
@@ -892,8 +907,11 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 18 )
 
+[connection signal="button_down" from="Background/MenuManager/Scene Select/Label/Button" to="Background/MenuManager" method="OnChapterMenu"]
 [connection signal="button_down" from="Background/MenuManager/Scene Select/Scene1" to="Background/MenuManager" method="OnScene" binds= [ "Scene1" ]]
+[connection signal="button_down" from="Background/MenuManager/Chapter Select/Label/Button" to="Background/MenuManager" method="OnVolumeMenu"]
 [connection signal="button_down" from="Background/MenuManager/Chapter Select/Chapter1" to="Background/MenuManager" method="OnChapter" binds= [ "Chapter1" ]]
+[connection signal="button_down" from="Background/MenuManager/Volume Select/Label/Button" to="Background/MenuManager" method="OnBookMenu"]
 [connection signal="button_down" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume" binds= [ "Volume1" ]]
 [connection signal="button_down" from="DialogueManager/Popup/FastForward/TextureButton" to="DialogueManager/Popup/FastForward" method="OnFastButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Next/TextureButton" to="." method="OnNextButton"]

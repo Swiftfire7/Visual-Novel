@@ -86,6 +86,10 @@ public class MenuManager : Control
         colorRect = GetNode<ColorRect>("Chapter Select");
         colorRect.Show();
     }
+    public void OnBookMenu()
+    {
+
+    }
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)
     //  {
