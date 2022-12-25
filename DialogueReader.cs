@@ -75,11 +75,7 @@ public class DialogueReader : Popup
         //dialogue iterator, reset after completion
         if (phraseNum >= characterManagers.Count())
         {
-            animationManager.SlideAllOff(slideSpeed, tween);
-            this.Visible = false;
-            phraseNum = 0;
-            previousIndex = 0;
-            dialogueEnded = true;
+            EndScene();
             return;
         }
         currentSpeaker = characterManagers[phraseNum].Speaker;
@@ -209,6 +205,14 @@ public class DialogueReader : Popup
         }
         return;
 
+    }
+    public void EndScene()
+    {
+        animationManager.SlideAllOff(slideSpeed, tween);
+        this.Visible = false;
+        phraseNum = 0;
+        previousIndex = 0;
+        dialogueEnded = true;
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

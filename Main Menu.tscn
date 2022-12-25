@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Assets/backgrounds/diffused menu scroll.png" type="Texture" id=1]
 [ext_resource path="res://MenuManager.cs" type="Script" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Assets/UI/leaf emroidery.png" type="Texture" id=16]
 [ext_resource path="res://Assets/UI/scroll2.png" type="Texture" id=17]
 [ext_resource path="res://SoundManager.cs" type="Script" id=18]
+[ext_resource path="res://SkipManager.cs" type="Script" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -752,7 +753,6 @@ valign = 1
 autowrap = true
 
 [node name="DialogueManager" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -952,7 +952,6 @@ position = Vector2( 75, 22.2603 )
 scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 3
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
@@ -1036,6 +1035,7 @@ margin_top = 0.0240097
 margin_right = 0.039978
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
+script = ExtResource( 19 )
 
 [node name="Popup" type="Popup" parent="DialogueManager/Popup/Skip Scene"]
 margin_left = 8.0
@@ -1064,7 +1064,6 @@ text = "Skip Scene"
 scroll_active = false
 
 [node name="CharacterSpawner" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -1119,3 +1118,4 @@ script = ExtResource( 18 )
 [connection signal="button_down" from="DialogueManager/Popup/FastForward/TextureButton" to="DialogueManager/Popup/FastForward" method="OnFastButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Next/TextureButton" to="." method="OnNextButton"]
 [connection signal="button_down" from="DialogueManager/Popup/AutoPlay/TextureButton" to="DialogueManager/Popup/AutoPlay" method="OnAutoButton"]
+[connection signal="button_down" from="DialogueManager/Popup/Skip Scene/TextureButton" to="DialogueManager/Popup/Skip Scene" method="SkipScene"]

@@ -9,7 +9,7 @@ public class SceneManager : Control
     FastManager fastManager;
     AnimationManager animationManager;
     DialogueReader dialogueReader;
-    Button button;
+    public Button Button;
     public static SceneManager GlobalSceneManager;
 
     // Called when the node enters the scene tree for the first time.
@@ -26,7 +26,7 @@ public class SceneManager : Control
         fastManager = GetNode<FastManager>("DialogueManager/Popup/FastForward");
         dialogueReader = GetNode<DialogueReader>("DialogueManager/Popup");
         animationManager = GetNode<AnimationManager>("Background");
-        button = GetNode<Button>("Background/MenuManager/instructions");
+        Button = GetNode<Button>("Background/MenuManager/instructions");
     }
     public override void _Process(float delta)
     {
@@ -49,14 +49,14 @@ public class SceneManager : Control
             //find the scene's character dialogue and UI, then display the dialogue
             Node obj = GetNode<Node>("CharacterSpawner");
             showDialogueBox(obj);
-            button.Hide();
+            Button.Hide();
             SceneStarted = true;
         }
-        else if (dialogueReader.dialogueEnded)
+        else if (dialogueReader.dialogueEnded && MenuIsUp == false)
         {
             SceneStarted = false;
             fastManager.FastPressed = false;
-            button.Show();
+            Button.Show();
         }
     }
     private void showDialogueBox(Node obj)
@@ -88,7 +88,7 @@ public class SceneManager : Control
         if (dialogueReader.dialogueEnded)
         {
             SceneStarted = false;
-            button.Show();
+            Button.Show();
         }
     }
     public void ShowDialogueElement()
