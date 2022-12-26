@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/backgrounds/diffused menu scroll.png" type="Texture" id=1]
 [ext_resource path="res://MenuManager.cs" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Assets/UI/scroll2.png" type="Texture" id=17]
 [ext_resource path="res://SoundManager.cs" type="Script" id=18]
 [ext_resource path="res://SkipManager.cs" type="Script" id=19]
+[ext_resource path="res://Assets/Books/Book1/Volume1/Chapter1/Scene1/characters/Sasheenidle.png" type="Texture" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -758,7 +759,6 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="Popup" type="Popup" parent="DialogueManager"]
-visible = true
 anchor_top = 0.662
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -804,47 +804,6 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "test name"
 
 [node name="Tween" type="Tween" parent="DialogueManager/Popup"]
-
-[node name="Biography" type="ColorRect" parent="DialogueManager/Popup"]
-anchor_left = 0.104
-anchor_top = 0.772
-anchor_right = 0.202
-anchor_bottom = 1.0
-margin_left = -0.496002
-margin_top = 0.0240097
-margin_right = 0.151993
-rect_pivot_offset = Vector2( -17, 40.0001 )
-color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Popup" type="Popup" parent="DialogueManager/Popup/Biography"]
-margin_left = 8.0
-margin_top = 4.99994
-margin_right = 48.0
-margin_bottom = 44.9999
-
-[node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/Biography"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture_normal = ExtResource( 16 )
-expand = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Popup/Biography/TextureButton"]
-anchor_left = 0.178
-anchor_top = 0.333
-anchor_right = 0.976
-anchor_bottom = 0.926
-margin_left = 0.0219994
-margin_top = 0.0119925
-margin_right = -0.0100021
-margin_bottom = 0.000988007
-mouse_filter = 1
-custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
-text = "Biography"
-scroll_active = false
 
 [node name="Event" type="ColorRect" parent="DialogueManager/Popup"]
 anchor_left = 0.325
@@ -952,7 +911,7 @@ position = Vector2( 75, 22.2603 )
 scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 3
+frame = 4
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
@@ -998,7 +957,6 @@ margin_top = 0.0240097
 margin_right = 0.511993
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
-script = ExtResource( 12 )
 
 [node name="Popup" type="Popup" parent="DialogueManager/Popup/AreaInfo"]
 margin_left = 8.0
@@ -1064,6 +1022,120 @@ custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
 text = "Skip Scene"
 scroll_active = false
 
+[node name="Biography" type="ColorRect" parent="DialogueManager/Popup"]
+anchor_left = 0.104
+anchor_top = 0.772
+anchor_right = 0.202
+anchor_bottom = 1.0
+margin_left = -0.496002
+margin_top = 0.0239868
+margin_right = 0.151993
+rect_pivot_offset = Vector2( -17, 40.0001 )
+color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
+script = ExtResource( 12 )
+
+[node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/Biography"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 16 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Popup/Biography/TextureButton"]
+anchor_left = 0.178
+anchor_top = 0.333
+anchor_right = 0.976
+anchor_bottom = 0.926
+margin_left = 0.0219994
+margin_top = 0.0119925
+margin_right = -0.0100021
+margin_bottom = 0.000988007
+mouse_filter = 1
+custom_colors/default_color = Color( 1, 0.984314, 0, 1 )
+text = "Biography"
+scroll_active = false
+
+[node name="Biography" type="Popup" parent="DialogueManager"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="DialogueManager/Biography"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.306976
+margin_bottom = 0.197998
+color = Color( 0, 0, 0, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/Biography"]
+anchor_left = 0.382
+anchor_top = 0.104
+anchor_right = 0.923
+anchor_bottom = 0.877
+margin_left = -0.16803
+margin_top = -0.400002
+margin_right = -0.152039
+margin_bottom = -0.200012
+mouse_filter = 1
+text = "this is the example text"
+
+[node name="TextureRect" type="TextureRect" parent="DialogueManager/Biography/RichTextLabel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -1.0
+
+[node name="TextureRect" type="TextureRect" parent="DialogueManager/Biography"]
+anchor_left = -0.001
+anchor_top = -0.002
+anchor_right = 0.354
+anchor_bottom = 1.0
+margin_left = 0.024
+margin_top = 0.2
+margin_right = 0.503998
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Button" type="Button" parent="DialogueManager/Biography"]
+anchor_left = 0.483
+anchor_top = 0.885
+anchor_right = 0.867
+anchor_bottom = 0.973
+margin_left = 0.40799
+margin_top = -0.115356
+margin_right = 0.399902
+margin_bottom = 0.172607
+text = "Resume"
+
+[node name="AreaInfo" type="Popup" parent="DialogueManager"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/AreaInfo"]
+anchor_left = 0.228
+anchor_top = 0.104
+anchor_right = 0.769
+anchor_bottom = 0.877
+margin_left = -0.472015
+margin_top = -0.400002
+margin_right = -0.456055
+margin_bottom = -0.200012
+mouse_filter = 1
+text = "this is the example text"
+
+[node name="TextureRect" type="TextureRect" parent="DialogueManager/AreaInfo/RichTextLabel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="DialogueManager/AreaInfo"]
+anchor_left = 0.306
+anchor_top = 0.885
+anchor_right = 0.69
+anchor_bottom = 0.973
+margin_left = -0.344025
+margin_top = -0.115356
+margin_right = -0.352112
+margin_bottom = 0.172607
+text = "Resume"
+
 [node name="CharacterSpawner" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1120,3 +1192,6 @@ script = ExtResource( 18 )
 [connection signal="button_down" from="DialogueManager/Popup/Next/TextureButton" to="." method="OnNextButton"]
 [connection signal="button_down" from="DialogueManager/Popup/AutoPlay/TextureButton" to="DialogueManager/Popup/AutoPlay" method="OnAutoButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Skip Scene/TextureButton" to="DialogueManager/Popup/Skip Scene" method="SkipScene"]
+[connection signal="button_down" from="DialogueManager/Popup/Biography/TextureButton" to="DialogueManager/Popup/Biography" method="CharacterBio"]
+[connection signal="button_down" from="DialogueManager/Biography/Button" to="DialogueManager/Popup/Biography" method="HideChar"]
+[connection signal="button_down" from="DialogueManager/AreaInfo/Button" to="DialogueManager/Popup/Biography" method="HideChar"]
