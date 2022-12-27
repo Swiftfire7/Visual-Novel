@@ -30,7 +30,9 @@ public class SceneManager : Control
     }
     public override void _Process(float delta)
     {
+        //display the next icon if the dialogue has finished
         dialogueReader.Indicator.Visible = dialogueReader.finished;
+        //next dialogue logic
         if (Input.IsActionJustPressed("ui_right") && SceneStarted == true)
         {
             if (dialogueReader.finished)
@@ -44,20 +46,26 @@ public class SceneManager : Control
                 dialogueReader.DialogueBox.VisibleCharacters = dialogueReader.DialogueBox.Text.Length;
             }
         }
+        //start scene logic
         else if (Input.IsActionJustPressed("ui_accept") && SceneStarted == false && MenuIsUp == false)
         {
-            //find the scene's character dialogue and UI, then display the dialogue
-            Node obj = GetNode<Node>("CharacterSpawner");
-            showDialogueBox(obj);
-            Button.Hide();
-            SceneStarted = true;
+            StartScene();
         }
+        //end scene logic
         else if (dialogueReader.dialogueEnded && MenuIsUp == false)
         {
             SceneStarted = false;
             fastManager.FastPressed = false;
             Button.Show();
         }
+    }
+    public void StartScene()
+    {
+        //find the scene's character dialogue and UI, then display the dialogue
+        Node obj = GetNode<Node>("CharacterSpawner");
+        showDialogueBox(obj);
+        Button.Hide();
+        SceneStarted = true;
     }
     private void showDialogueBox(Node obj)
     {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/backgrounds/diffused menu scroll.png" type="Texture" id=1]
 [ext_resource path="res://MenuManager.cs" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://SoundManager.cs" type="Script" id=18]
 [ext_resource path="res://SkipManager.cs" type="Script" id=19]
 [ext_resource path="res://Assets/Books/Book1/Volume1/Chapter1/Scene1/characters/Sasheenidle.png" type="Texture" id=20]
+[ext_resource path="res://Assets/UI/black opaque.png" type="Texture" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -68,7 +69,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Background/MenuManager/instructions"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "tap enter or space to begin"
+text = "click here, or tap enter or space to begin"
 align = 1
 valign = 1
 autowrap = true
@@ -911,6 +912,7 @@ position = Vector2( 75, 22.2603 )
 scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
+frame = 4
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
@@ -956,12 +958,6 @@ margin_top = 0.0240097
 margin_right = 0.511993
 rect_pivot_offset = Vector2( -17, 40.0001 )
 color = Color( 0.541176, 0.0156863, 0.0156863, 1 )
-
-[node name="Popup" type="Popup" parent="DialogueManager/Popup/AreaInfo"]
-margin_left = 8.0
-margin_top = 4.99994
-margin_right = 48.0
-margin_bottom = 44.9999
 
 [node name="TextureButton" type="TextureButton" parent="DialogueManager/Popup/AreaInfo"]
 anchor_right = 1.0
@@ -1107,22 +1103,6 @@ text = "Resume"
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/AreaInfo"]
-anchor_left = 0.228
-anchor_top = 0.104
-anchor_right = 0.769
-anchor_bottom = 0.877
-margin_left = -0.472015
-margin_top = -0.400002
-margin_right = -0.456055
-margin_bottom = -0.200012
-mouse_filter = 1
-text = "this is the example text"
-
-[node name="TextureRect" type="TextureRect" parent="DialogueManager/AreaInfo/RichTextLabel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
 [node name="Button" type="Button" parent="DialogueManager/AreaInfo"]
 anchor_left = 0.306
 anchor_top = 0.885
@@ -1133,6 +1113,28 @@ margin_top = -0.115356
 margin_right = -0.352112
 margin_bottom = 0.172607
 text = "Resume"
+
+[node name="TextureRect" type="TextureRect" parent="DialogueManager/AreaInfo"]
+anchor_left = 0.278
+anchor_top = 0.107
+anchor_right = 0.723
+anchor_bottom = 0.865
+margin_left = 0.327972
+margin_top = -0.200005
+margin_right = -0.352051
+margin_bottom = -6.10352e-05
+texture = ExtResource( 21 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/AreaInfo/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -3.0
+margin_bottom = -7.0
+mouse_filter = 1
+text = "this is the example text"
 
 [node name="CharacterSpawner" type="Control" parent="."]
 anchor_right = 1.0
@@ -1179,6 +1181,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 18 )
 
+[connection signal="button_down" from="Background/MenuManager/instructions" to="." method="StartScene"]
 [connection signal="button_down" from="Background/MenuManager/Scene Select/Label/Button" to="Background/MenuManager" method="OnChapterMenu"]
 [connection signal="button_down" from="Background/MenuManager/Scene Select/Scene1" to="Background/MenuManager" method="OnScene" binds= [ "Scene1" ]]
 [connection signal="button_down" from="Background/MenuManager/Chapter Select/Label/Button" to="Background/MenuManager" method="OnVolumeMenu"]
@@ -1189,7 +1192,8 @@ script = ExtResource( 18 )
 [connection signal="button_down" from="DialogueManager/Popup/FastForward/TextureButton" to="DialogueManager/Popup/FastForward" method="OnFastButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Next/TextureButton" to="." method="OnNextButton"]
 [connection signal="button_down" from="DialogueManager/Popup/AutoPlay/TextureButton" to="DialogueManager/Popup/AutoPlay" method="OnAutoButton"]
+[connection signal="button_down" from="DialogueManager/Popup/AreaInfo/TextureButton" to="DialogueManager/Popup/Biography" method="AreaBio"]
 [connection signal="button_down" from="DialogueManager/Popup/Skip Scene/TextureButton" to="DialogueManager/Popup/Skip Scene" method="SkipScene"]
 [connection signal="button_down" from="DialogueManager/Popup/Biography/TextureButton" to="DialogueManager/Popup/Biography" method="CharacterBio"]
 [connection signal="button_down" from="DialogueManager/Biography/Button" to="DialogueManager/Popup/Biography" method="HideChar"]
-[connection signal="button_down" from="DialogueManager/AreaInfo/Button" to="DialogueManager/Popup/Biography" method="HideChar"]
+[connection signal="button_down" from="DialogueManager/AreaInfo/Button" to="DialogueManager/Popup/Biography" method="HideArea"]

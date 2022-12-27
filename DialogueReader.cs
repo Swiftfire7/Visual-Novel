@@ -72,6 +72,11 @@ public class DialogueReader : Popup
     }
     public async void NextPhrase()
     {
+        if (dialogueEnded)
+        {
+            phraseNum = 0;
+            previousIndex = 0;
+        }
         //dialogue iterator, reset after completion
         if (phraseNum >= characterManagers.Count())
         {
