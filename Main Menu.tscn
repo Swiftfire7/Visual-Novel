@@ -912,7 +912,7 @@ position = Vector2( 75, 22.2603 )
 scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 4
+frame = 5
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
@@ -1136,6 +1136,43 @@ margin_bottom = -7.0
 mouse_filter = 1
 text = "this is the example text"
 
+[node name="EventLog" type="Popup" parent="DialogueManager"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="DialogueManager/EventLog"]
+anchor_left = 0.306
+anchor_top = 0.885
+anchor_right = 0.69
+anchor_bottom = 0.973
+margin_left = -0.344025
+margin_top = -0.115356
+margin_right = -0.352112
+margin_bottom = 0.172607
+text = "Resume"
+
+[node name="TextureRect" type="TextureRect" parent="DialogueManager/EventLog"]
+anchor_left = 0.141
+anchor_top = 0.228
+anchor_right = 0.896
+anchor_bottom = 0.865
+margin_left = -0.384003
+margin_top = 0.199997
+margin_right = -0.504028
+margin_bottom = -6.10352e-05
+texture = ExtResource( 21 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueManager/EventLog/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -3.0
+margin_bottom = -7.0
+mouse_filter = 1
+text = "this is the example text"
+
 [node name="CharacterSpawner" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1189,6 +1226,7 @@ script = ExtResource( 18 )
 [connection signal="button_down" from="Background/MenuManager/Volume Select/Label/Button" to="Background/MenuManager" method="OnBookMenu"]
 [connection signal="button_down" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume" binds= [ "Volume1" ]]
 [connection signal="button_down" from="Background/MenuManager/Book Select/Volume 1" to="Background/MenuManager" method="OnBook" binds= [ "Book1" ]]
+[connection signal="button_down" from="DialogueManager/Popup/Event/TextureButton" to="DialogueManager/Popup/Event" method="ShowLog"]
 [connection signal="button_down" from="DialogueManager/Popup/FastForward/TextureButton" to="DialogueManager/Popup/FastForward" method="OnFastButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Next/TextureButton" to="." method="OnNextButton"]
 [connection signal="button_down" from="DialogueManager/Popup/AutoPlay/TextureButton" to="DialogueManager/Popup/AutoPlay" method="OnAutoButton"]
@@ -1197,3 +1235,4 @@ script = ExtResource( 18 )
 [connection signal="button_down" from="DialogueManager/Popup/Biography/TextureButton" to="DialogueManager/Popup/Biography" method="CharacterBio"]
 [connection signal="button_down" from="DialogueManager/Biography/Button" to="DialogueManager/Popup/Biography" method="HideChar"]
 [connection signal="button_down" from="DialogueManager/AreaInfo/Button" to="DialogueManager/Popup/Biography" method="HideArea"]
+[connection signal="button_down" from="DialogueManager/EventLog/Button" to="DialogueManager/Popup/Event" method="HideLog"]

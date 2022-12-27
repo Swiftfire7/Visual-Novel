@@ -13,11 +13,15 @@ public class AutoplayManager : ColorRect
     public void OnAutoButton()
     {
         Auto = !Auto;
+        if (dialogueReader.finished == true)
+        {
+            dialogueReader.NextPhrase();
+        }
     }
     public void SetAutoSpeed()
     {
         AutoSpeed = dialogueReader.DialogueBox.Text.Length * dialogueReader.textSpeed;
-        AutoSpeed = AutoSpeed + 2f;
+        AutoSpeed = AutoSpeed + 1.5f;
         if (AutoSpeed < 1.2f)
         {
             AutoSpeed = 1.2f;

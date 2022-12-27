@@ -34,6 +34,7 @@ public class DialogueReader : Popup
     public AutoplayManager autoplayManager;
     public List<CharacterManager> characterManagers;
     SceneManager scene;
+    EventLogger eventLogger;
 
 
     // Called when the node enters the scene tree for the first time.
@@ -52,6 +53,7 @@ public class DialogueReader : Popup
         fastManager = GetNode<FastManager>("FastForward");
         autoplayManager = GetNode<AutoplayManager>("AutoPlay");
         scene = GetNode<SceneManager>("../../");
+        eventLogger = GetNode<EventLogger>("Event");
         GetDialogue();
     }
 
@@ -91,6 +93,7 @@ public class DialogueReader : Popup
         //text box logic
         Speaker.BbcodeText = characterManagers[phraseNum].Speaker;
         DialogueBox.BbcodeText = characterManagers[phraseNum].Text;
+        eventLogger.WriteToLog();
         if (fastManager.FastPressed)
         {
             DialogueBox.VisibleCharacters = DialogueBox.Text.Length;
@@ -190,6 +193,15 @@ public class DialogueReader : Popup
                     DialogueBox.VisibleCharacters = DialogueBox.Text.Length;
                     autoplayManager.AutoSpeed = 0;
                 }
+            }
+            //disable auto features while in menus
+            if (fastManager.FastPressed && scene.MenuIsUp)
+            {
+                fastManager.FastPressed = false;
+            }
+            if (autoplayManager.Auto && scene.MenuIsUp)
+            {
+                autoplayManager.Auto = false;
             }
         }
         //hold previous values, iterate, and allow progression

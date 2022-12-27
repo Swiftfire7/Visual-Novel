@@ -14,6 +14,10 @@ public class FastManager : ColorRect
     public void OnFastButton()
     {
         FastPressed = !FastPressed;
+        if (dialogueReader.finished == true)
+        {
+            dialogueReader.NextPhrase();
+        }
     }
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)
