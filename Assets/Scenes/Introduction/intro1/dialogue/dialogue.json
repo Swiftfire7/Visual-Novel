@@ -9,7 +9,7 @@
     {
         "Speaker": " ",
         "Emotion": "idle",
-        "Text": "Near the end of the oasis, a sign reads 'The Sandy Sphinx'",
+        "Text": "Near the end of the oasis, a sign reads 'The Sandy Sphinx'.",
         "Position": "1",
         "Mod": ""
     },
@@ -23,7 +23,7 @@
     {
         "Speaker": "Midna",
         "Emotion": "idle",
-        "Text": "(knock knock) Salutations, is this the tavern outsiders were directed to gather at?",
+        "Text": "(knock knock) Salutations, is this the tavern that outsiders were directed to gather at?",
         "Position": "1",
         "Mod": ""
     },
@@ -44,7 +44,7 @@
     {
         "Speaker": " ",
         "Emotion": "idle",
-        "Text": "the barista smiles and shows her inside",
+        "Text": "the barista smiles and shows her inside.",
         "Position": "4",
         "Mod": ""
     },
@@ -58,14 +58,14 @@
     {
         "Speaker": "Bularia",
         "Emotion": "idle",
-        "Text": "Oh HELL yeah! I haven't had anything since yesterday!",
+        "Text": "Oh HELL yeah! I haven't had anything but sand since yesterday!",
         "Position": "2",
         "Mod": ""
     },
     {
         "Speaker": "Gunter",
         "Emotion": "idle",
-        "Text": "Ain't that the truth. Preach it, sister! I'm parched, let's get to it.",
+        "Text": "HA! Ain't that the truth. Preach it, sister! I'm parched, let's get to it.",
         "Position": "1",
         "Mod": ""
     },
@@ -79,14 +79,14 @@
     {
         "Speaker": "Tiffany",
         "Emotion": "idle",
-        "Text": "Mmkay there ain't no bloomin' way tha' I missed an enti're town",
+        "Text": "Mm'kay, there ain't no bloomin' way tha' I missed an enti're town...",
         "Position": "1",
         "Mod": ""
     },
     {
         "Speaker": "Tiffany",
         "Emotion": "idle",
-        "Text": "'SPECIALLY NOT ONE THIS BLOODY COOL! They got all sorts of folks, a pool, and a tavern!",
+        "Text": "'SPECIALLY NOT ONE THIS BLOODY COOL! They got all sorts of folks, a pool, AND a tavern!",
         "Position": "1",
         "Mod": ""
     },
@@ -107,21 +107,21 @@
     {
         "Speaker": "Tiffany",
         "Emotion": "idle",
-        "Text": "I cahn' wai' to spread my people's fines' dahnces from it",
+        "Text": "I cahn' wai' to spread my people's fines' dahnces from it!",
         "Position": "1",
         "Mod": ""
     },
     {
         "Speaker": " ",
         "Emotion": "idle",
-        "Text": "The free air spirit glides through the opened doors",
+        "Text": "The free air spirit glides through the opened doors.",
         "Position": "1",
         "Mod": ""
     },
     {
         "Speaker": "Sasheen",
         "Emotion": "idle",
-        "Text": "Well, the tavern's all but full, I had better begin the debriefing...",
+        "Text": "Well, the tavern's all but full, I had better begin the briefing...",
         "Position": "3",
         "Mod": ""
     },

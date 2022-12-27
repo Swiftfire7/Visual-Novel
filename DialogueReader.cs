@@ -33,6 +33,7 @@ public class DialogueReader : Popup
     public FastManager fastManager;
     public AutoplayManager autoplayManager;
     public List<CharacterManager> characterManagers;
+    public MenuManager menuManager;
     SceneManager scene;
     EventLogger eventLogger;
 
@@ -49,6 +50,7 @@ public class DialogueReader : Popup
         Indicator = GetNode<AnimatedSprite>("Next/AnimatedSprite");
         characterSpawner = GetNode<Control>(characterSpawnerPath);
         animationManager = GetNode<AnimationManager>("../../Background/");
+        menuManager = GetNode<MenuManager>("../../Background/MenuManager");
         tween = GetNode<Tween>("Tween");
         fastManager = GetNode<FastManager>("FastForward");
         autoplayManager = GetNode<AutoplayManager>("AutoPlay");
@@ -106,7 +108,7 @@ public class DialogueReader : Popup
         string speakerEmotion = characterManagers[phraseNum].Emotion;
         string speakerMod = characterManagers[phraseNum].Mod;
 
-        var img = (Texture)GD.Load("res://Assets/Scenes/Introduction/intro1/characters/" + currentSpeaker + speakerMod + speakerEmotion + ".png");
+        var img = (Texture)GD.Load(menuManager.SelectedScenePath + "/characters/" + currentSpeaker + speakerMod + speakerEmotion + ".png");
 
         //wire up the sprite according to the speaker's entrance position
         spritePath = characterSpawnerPath + "/Position" + currentPosition;
@@ -194,15 +196,15 @@ public class DialogueReader : Popup
                     autoplayManager.AutoSpeed = 0;
                 }
             }
-            //disable auto features while in menus
-            if (fastManager.FastPressed && scene.MenuIsUp)
-            {
-                fastManager.FastPressed = false;
-            }
-            if (autoplayManager.Auto && scene.MenuIsUp)
-            {
-                autoplayManager.Auto = false;
-            }
+        }
+        //disable auto features while in menus
+        if (fastManager.FastPressed && scene.MenuIsUp)
+        {
+            fastManager.FastPressed = false;
+        }
+        if (autoplayManager.Auto && scene.MenuIsUp)
+        {
+            autoplayManager.Auto = false;
         }
         //hold previous values, iterate, and allow progression
         previousSprite = characterSprite;
@@ -231,6 +233,7 @@ public class DialogueReader : Popup
         phraseNum = 0;
         previousIndex = 0;
         dialogueEnded = true;
+        eventLogger.WriteToLog();
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
