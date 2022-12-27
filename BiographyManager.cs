@@ -30,11 +30,11 @@ public class BiographyManager : ColorRect
     {
         sceneManager.MenuIsUp = true;
         //load the speaker's bio to populate the bio menu with
-        charBio = dialogueReader.characterManagers[dialogueReader.phraseNum].Speaker;
+        charBio = dialogueReader.characterManagers[dialogueReader.phraseNum].Speaker + dialogueReader.characterManagers[dialogueReader.phraseNum].Mod;
         //find the speaker's bio
         temp = menuManager.SelectedScenePath + "/biographies/" + charBio + ".txt";
         //display the sprite next to the bio
-        characterSprite.Texture = (Texture)GD.Load(menuManager.SelectedScenePath + "/characters/" + charBio + dialogueReader.characterManagers[dialogueReader.phraseNum].Emotion + ".png");
+        characterSprite.Texture = (Texture)GD.Load(menuManager.SelectedScenePath + "/characters/" + charBio + dialogueReader.characterManagers[dialogueReader.phraseNum].Mod + dialogueReader.characterManagers[dialogueReader.phraseNum].Emotion + ".png");
         //write to the charBio colorRect/RichText Doc
         File file = new File();
         file.Open(temp, File.ModeFlags.Read);

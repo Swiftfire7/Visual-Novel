@@ -95,9 +95,10 @@ public class DialogueReader : Popup
             DialogueBox.VisibleCharacters = 0;
         }
         //character sprite logic
-        string speakerEmotion = currentSpeaker + characterManagers[phraseNum].Emotion;
+        string speakerEmotion = characterManagers[phraseNum].Emotion;
+        string speakerMod = characterManagers[phraseNum].Mod;
 
-        var img = (Texture)GD.Load("res://Assets/Scenes/Introduction/intro1/characters/" + speakerEmotion + ".png");
+        var img = (Texture)GD.Load("res://Assets/Scenes/Introduction/intro1/characters/" + currentSpeaker + speakerMod + speakerEmotion + ".png");
 
         //wire up the sprite according to the speaker's entrance position
         spritePath = characterSpawnerPath + "/Position" + currentPosition;

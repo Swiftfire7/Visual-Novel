@@ -911,7 +911,6 @@ position = Vector2( 75, 22.2603 )
 scale = Vector2( 0.1125, 0.1125 )
 frames = SubResource( 1 )
 animation = "float"
-frame = 4
 playing = true
 
 [node name="AutoPlay" type="ColorRect" parent="DialogueManager/Popup"]
@@ -1055,7 +1054,6 @@ text = "Biography"
 scroll_active = false
 
 [node name="Biography" type="Popup" parent="DialogueManager"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 

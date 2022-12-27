@@ -8,6 +8,7 @@ public class CharacterManager : Control
     public string Emotion;
     public string Text;
     public string Position;
+    public string Mod;
     public override void _Ready()
     {
     }
