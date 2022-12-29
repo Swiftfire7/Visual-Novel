@@ -9,6 +9,8 @@ public class SceneManager : Control
     FastManager fastManager;
     AnimationManager animationManager;
     DialogueReader dialogueReader;
+    SoundManager soundManager;
+    MenuManager menuManager;
     public Button Button;
     public static SceneManager GlobalSceneManager;
 
@@ -27,6 +29,8 @@ public class SceneManager : Control
         dialogueReader = GetNode<DialogueReader>("DialogueManager/Popup");
         animationManager = GetNode<AnimationManager>("Background");
         Button = GetNode<Button>("Background/MenuManager/instructions");
+        soundManager = GetNode<SoundManager>("SoundManager");
+        menuManager = GetNode<MenuManager>("Background/MenuManager");
     }
     public override void _Process(float delta)
     {
@@ -57,6 +61,10 @@ public class SceneManager : Control
             SceneStarted = false;
             fastManager.FastPressed = false;
             Button.Show();
+        }
+        else if (Input.IsActionJustPressed("ui_menu"))
+        {
+            menuManager.OnOptions();
         }
     }
     public void StartScene()

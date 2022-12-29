@@ -12,12 +12,57 @@ public class MenuManager : Control
     ColorRect colorRect;
     public TextureRect background;
     SceneManager sceneManager;
+    CharacterManager characterManager;
+    Popup dialogue;
+    SoundManager soundManager;
+    public Popup Options;
+    public bool MenuWasUp = false;
+    bool thisWasUp = false;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         sceneManager = GetNode<SceneManager>("../../");
         background = GetNode<TextureRect>("../");
+        Options = GetNode<Popup>("../../Options");
+        soundManager = GetNode<SoundManager>("../../SoundManager");
+    }
+    public void OnOptions()
+    {
+        if (!thisWasUp)
+        {
+            if (sceneManager.MenuIsUp)
+            {
+                MenuWasUp = true;
+            }
+            else
+            {
+                MenuWasUp = false;
+            }
+            if (MenuWasUp)
+            {
+                Options.Show();
+            }
+            else
+            {
+                sceneManager.MenuIsUp = true;
+                Options.Show();
+            }
+        }
+        else
+        {
+            if (MenuWasUp)
+            {
+                MenuWasUp = false;
+                Options.Hide();
+            }
+            else
+            {
+                sceneManager.MenuIsUp = false;
+                Options.Hide();
+            }
+        }
+        thisWasUp = !thisWasUp;
     }
     //when an item is selected, show the next menu
     public void OnBook(string PressedButton)

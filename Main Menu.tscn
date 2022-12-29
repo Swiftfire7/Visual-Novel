@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/backgrounds/diffused menu scroll.png" type="Texture" id=1]
 [ext_resource path="res://MenuManager.cs" type="Script" id=2]
+[ext_resource path="res://Music/Heartbeat - Royalty Free Fantasy Music.ogg" type="AudioStream" id=3]
 [ext_resource path="res://CharacterManager.cs" type="Script" id=4]
 [ext_resource path="res://SceneManager.cs" type="Script" id=5]
 [ext_resource path="res://Assets/UI/wax seal4.png" type="Texture" id=6]
@@ -1211,14 +1212,110 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 18 )
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource( 3 )
+
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="SoundManager"]
+
+[node name="VoicePlayer" type="AudioStreamPlayer" parent="SoundManager"]
+
+[node name="Options" type="Popup" parent="."]
+anchor_right = 0.999
+anchor_bottom = 0.998
+margin_right = 0.0239258
+margin_bottom = 0.200012
+
+[node name="Menu" type="TextureRect" parent="Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Music" type="HSlider" parent="Options/Menu"]
+anchor_left = 0.347
+anchor_top = 0.354
+anchor_right = 0.641
+anchor_bottom = 0.381
+margin_left = 0.0189819
+margin_top = -0.0460052
+margin_right = 0.256958
+margin_bottom = -0.219009
+min_value = -26.0
+max_value = 6.0
+tick_count = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Options/Menu/Music"]
+anchor_left = -0.14
+anchor_top = 0.062
+anchor_right = -0.007
+anchor_bottom = 0.937
+margin_left = 0.139999
+margin_top = 0.00799996
+margin_right = 0.107
+margin_bottom = 0.00799942
+text = "Music"
+
+[node name="Sfx" type="HSlider" parent="Options/Menu"]
+anchor_left = 0.347
+anchor_top = 0.452
+anchor_right = 0.642
+anchor_bottom = 0.479
+margin_left = 0.0189819
+margin_top = 0.251984
+margin_right = 0.234009
+margin_bottom = 0.0789795
+min_value = -30.0
+max_value = 6.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Options/Menu/Sfx"]
+anchor_left = -0.28
+anchor_right = 0.003
+anchor_bottom = 1.0
+margin_top = 2.0
+margin_right = 0.1
+text = "Sound Effects"
+
+[node name="Voice" type="HSlider" parent="Options/Menu"]
+anchor_left = 0.347
+anchor_top = 0.556
+anchor_right = 0.643
+anchor_bottom = 0.583
+margin_left = 0.0189819
+margin_top = -0.0440369
+margin_right = 0.210999
+margin_bottom = -0.21701
+rect_pivot_offset = Vector2( -16, 349 )
+min_value = -30.0
+max_value = 6.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Options/Menu/Voice"]
+anchor_left = -0.134
+anchor_top = 0.125
+anchor_right = -0.003
+anchor_bottom = 1.0
+margin_left = -0.129997
+margin_right = -0.085
+text = "Voice"
+
 [connection signal="button_down" from="Background/MenuManager/instructions" to="." method="StartScene"]
 [connection signal="button_down" from="Background/MenuManager/Scene Select/Label/Button" to="Background/MenuManager" method="OnChapterMenu"]
 [connection signal="button_down" from="Background/MenuManager/Scene Select/Scene1" to="Background/MenuManager" method="OnScene" binds= [ "Scene1" ]]
+[connection signal="button_down" from="Background/MenuManager/Scene Select/Scene1" to="SoundManager" method="UpdateMusic" binds= [ "Planning" ]]
 [connection signal="button_down" from="Background/MenuManager/Chapter Select/Label/Button" to="Background/MenuManager" method="OnVolumeMenu"]
+[connection signal="button_down" from="Background/MenuManager/Chapter Select/Label/Button" to="SoundManager" method="UpdateMusic" binds= [ "The Desert" ]]
 [connection signal="button_down" from="Background/MenuManager/Chapter Select/Chapter1" to="Background/MenuManager" method="OnChapter" binds= [ "Chapter1" ]]
 [connection signal="button_down" from="Background/MenuManager/Volume Select/Label/Button" to="Background/MenuManager" method="OnBookMenu"]
+[connection signal="button_down" from="Background/MenuManager/Volume Select/Label/Button" to="SoundManager" method="UpdateMusic" binds= [ "Heartbeat" ]]
 [connection signal="button_down" from="Background/MenuManager/Volume Select/Volume 1" to="Background/MenuManager" method="OnVolume" binds= [ "Volume1" ]]
 [connection signal="button_down" from="Background/MenuManager/Book Select/Volume 1" to="Background/MenuManager" method="OnBook" binds= [ "Book1" ]]
+[connection signal="button_down" from="Background/MenuManager/Book Select/Volume 1" to="SoundManager" method="UpdateMusic" binds= [ "The Desert" ]]
 [connection signal="button_down" from="DialogueManager/Popup/Event/TextureButton" to="DialogueManager/Popup/Event" method="ShowLog"]
 [connection signal="button_down" from="DialogueManager/Popup/FastForward/TextureButton" to="DialogueManager/Popup/FastForward" method="OnFastButton"]
 [connection signal="button_down" from="DialogueManager/Popup/Next/TextureButton" to="." method="OnNextButton"]
@@ -1229,3 +1326,6 @@ script = ExtResource( 18 )
 [connection signal="button_down" from="DialogueManager/Biography/Button" to="DialogueManager/Popup/Biography" method="HideChar"]
 [connection signal="button_down" from="DialogueManager/AreaInfo/Button" to="DialogueManager/Popup/Biography" method="HideArea"]
 [connection signal="button_down" from="DialogueManager/EventLog/Button" to="DialogueManager/Popup/Event" method="HideLog"]
+[connection signal="value_changed" from="Options/Menu/Music" to="SoundManager" method="MusicVolume"]
+[connection signal="value_changed" from="Options/Menu/Sfx" to="SoundManager" method="SfxVolume"]
+[connection signal="value_changed" from="Options/Menu/Voice" to="SoundManager" method="VoiceVolume"]
