@@ -1,50 +1,52 @@
 using Godot;
 using System;
-
-public class AutoplayManager : ColorRect
+namespace VNS
 {
-    private DialogueReader dialogueReader;
-    public bool Auto = false;
-    public float AutoSpeed = 0f;
-    public override void _Ready()
+    public class AutoplayManager : ColorRect
     {
-        dialogueReader = GetNode<DialogueReader>("../");
-    }
-    public void OnAutoButton()
-    {
-        Auto = !Auto;
-        if (dialogueReader.finished == true)
+        private DialogueReader dialogueReader;
+        public bool Auto = false;
+        public float AutoSpeed = 0f;
+        public override void _Ready()
         {
-            dialogueReader.NextPhrase();
+            dialogueReader = GetNode<DialogueReader>("../");
         }
-    }
-    public void SetAutoSpeed()
-    {
-        AutoSpeed = dialogueReader.DialogueBox.Text.Length * dialogueReader.textSpeed;
-        AutoSpeed = AutoSpeed + 1.5f;
-        if (AutoSpeed < 1.2f)
+        public void OnAutoButton()
         {
-            AutoSpeed = 1.2f;
+            Auto = !Auto;
+            if (dialogueReader.finished == true)
+            {
+                dialogueReader.NextPhrase();
+            }
         }
-    }
-    public void UpdateAutoSpeed()
-    {
-        if (Auto)
+        public void SetAutoSpeed()
         {
-            AutoSpeed = AutoSpeed - dialogueReader.textSpeed;
-            if (AutoSpeed < 0)
+            AutoSpeed = dialogueReader.DialogueBox.Text.Length * dialogueReader.textSpeed;
+            AutoSpeed = AutoSpeed + 1.5f;
+            if (AutoSpeed < 1.2f)
+            {
+                AutoSpeed = 1.2f;
+            }
+        }
+        public void UpdateAutoSpeed()
+        {
+            if (Auto)
+            {
+                AutoSpeed = AutoSpeed - dialogueReader.textSpeed;
+                if (AutoSpeed < 0)
+                {
+                    AutoSpeed = 0;
+                }
+            }
+            else
             {
                 AutoSpeed = 0;
             }
         }
-        else
-        {
-            AutoSpeed = 0;
-        }
+        //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+        //  public override void _Process(float delta)
+        //  {
+        //      
+        //  }
     }
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
 }
